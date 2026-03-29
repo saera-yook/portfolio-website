@@ -40,14 +40,8 @@ const ProjectItem = ({
   participants?: string
 }) => (
   <div className="project-card">
-    <div className="flex justify-between items-start mb-2">
-      {link ? (
-        <a href={link} target="_blank" rel="noreferrer" className="group/title">
-          <h3 className="text-2xl font-bold group-hover/title:underline">{title}</h3>
-        </a>
-      ) : (
-        <h3 className="text-2xl font-bold">{title}</h3>
-      )}
+    <div className="flex justify-between items-center mb-2">
+      <h3 className="text-2xl font-bold">{title}</h3>
       <div className="flex items-center gap-6">
         {link && (
           <a href={link} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted hover:text-black transition-colors">
@@ -654,10 +648,11 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
             <span>Experience & Sharing</span>
           </div>
           <div className="project-card">
-            <div className="flex justify-between items-start mb-2">
+            <div className="flex justify-between items-center mb-2">
               <h4 className="text-xl font-bold">YouTube 우아한테크 채널 - [10분 테코톡] 아이나의 서킷브레이커</h4>
-              <a href="https://youtu.be/lddAZUvOUrs?si=Qx58-lz4nSvyBja_" target="_blank" rel="noreferrer" className="text-muted hover:text-black transition-colors">
-                <ArrowUpRight size={20} />
+              <a href="https://youtu.be/lddAZUvOUrs?si=Qx58-lz4nSvyBja_" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted hover:text-black transition-colors">
+                <span>보러가기</span>
+                <ArrowUpRight size={16} />
               </a>
             </div>
             <p className="text-muted mb-4 leading-relaxed">
@@ -676,7 +671,7 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
           <div className="flex gap-6 text-sm font-medium">
             <a href="mailto:yook.saera@gmail.com" className="hover:text-muted transition-colors">Email</a>
             <a href="https://github.com/saera-yook" target="_blank" rel="noreferrer" className="hover:text-muted transition-colors">GitHub</a>
-            <a href="#" className="hover:text-muted transition-colors">LinkedIn</a>
+            <a href="tel:+821000000000" className="hover:text-muted transition-colors">Contact</a>
           </div>
         </footer>
       </div>
