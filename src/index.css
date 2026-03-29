@@ -15,9 +15,15 @@ html {
 :root {
   --bg: #ffffff;
   --ink: #111111;
-  --muted: #666666;
+  --muted: #767676; /* Adjusted to ~4.6:1 contrast ratio for minimum AA compliance */
   --line: #eeeeee;
   --accent: #000000;
+}
+
+/* Global Focus Styles for Accessibility */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
 }
 
 body {
@@ -47,7 +53,7 @@ section, header, [id] {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 2px 8px;
+  padding: 4px 10px; /* Increased padding for better touch target */
   border: 1px solid var(--line);
   border-radius: 4px;
   color: var(--muted);

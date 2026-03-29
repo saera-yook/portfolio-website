@@ -39,36 +39,36 @@ const ProjectItem = ({
   period?: string,
   participants?: string
 }) => (
-  <div className="project-card">
+  <article className="project-card">
     <div className="flex justify-between items-center mb-2">
       <h3 className="text-2xl font-bold">{title}</h3>
       <div className="flex items-center gap-6">
         {link && (
-          <a href={link} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted hover:text-black transition-colors">
+          <a href={link} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-muted hover:text-black transition-colors p-3 -m-3" aria-label={`사용해보기: ${title}`}>
             <span>사용해보기</span>
-            <ArrowUpRight size={16} />
+            <ArrowUpRight size={16} aria-hidden="true" />
           </a>
         )}
         {github && (
-          <a href={github} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted hover:text-black transition-colors">
+          <a href={github} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-muted hover:text-black transition-colors p-3 -m-3" aria-label={`GitHub: ${title}`}>
             <span>GitHub</span>
-            <Github size={16} />
+            <Github size={16} aria-hidden="true" />
           </a>
         )}
       </div>
     </div>
     <div className="flex flex-col gap-3 mb-6">
       {(period || participants) && (
-        <div className="flex items-center gap-4 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+        <div className="flex items-center gap-4 text-[11px] font-bold uppercase tracking-wider text-muted">
           {period && (
             <div className="flex items-center gap-1.5">
-              <Clock size={12} />
+              <Clock size={12} aria-hidden="true" />
               <span>{period}</span>
             </div>
           )}
           {participants && (
             <div className="flex items-center gap-1.5">
-              <Users size={12} />
+              <Users size={12} aria-hidden="true" />
               <span>{participants}</span>
             </div>
           )}
@@ -86,12 +86,12 @@ const ProjectItem = ({
         {details}
       </div>
     )}
-  </div>
+  </article>
 );
 
 const TechBadge = ({ icon: Icon, label, value }: { icon: any, label: string, value: string }) => (
-  <div className="flex items-center gap-3 py-2 border-b border-slate-50">
-    <Icon size={16} className="text-muted" />
+  <div className="flex items-center gap-3 py-2 border-b border-slate-100">
+    <Icon size={16} className="text-muted" aria-hidden="true" />
     <span className="text-xs font-bold uppercase tracking-wider w-24 shrink-0">{label}</span>
     <span className="text-sm text-muted">{value}</span>
   </div>
@@ -153,16 +153,16 @@ const SideNav = () => {
   }, []);
 
   return (
-    <nav className="fixed left-12 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-6 z-50 w-48">
+    <nav aria-label="Side navigation" className="fixed left-12 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-6 z-50 w-48">
       <div className="flex flex-col gap-3">
         {sections.map((s) => (
           <a
             key={s.id}
             href={`#${s.id}`}
-            className={`group flex items-center gap-3 transition-all duration-300 ${
+            className={`group flex items-center gap-3 transition-all duration-300 py-3 px-1 ${
               activeId === s.id 
                 ? "text-black translate-x-2" 
-                : "text-slate-400 hover:text-slate-600"
+                : "text-muted hover:text-slate-800"
             } ${s.indent ? (s.sub ? "ml-8" : "ml-4") : ""}`}
             onClick={(e) => {
               // The scroll listener will handle the active state update
@@ -170,9 +170,9 @@ const SideNav = () => {
           >
             <div className={`h-1 w-1 rounded-full bg-current transition-all duration-300 ${
               activeId === s.id ? "scale-150" : "scale-0"
-            }`} />
+            }`} aria-hidden="true" />
             <span className={`font-black uppercase tracking-[0.2em] whitespace-nowrap ${
-              s.sub ? "text-[9px]" : "text-[11px]"
+              s.sub ? "text-[10px]" : "text-[12px]"
             }`}>
               {s.label}
             </span>
@@ -187,7 +187,7 @@ export default function App() {
   return (
     <div className="min-h-screen py-24 relative">
       <SideNav />
-      <div className="container-narrow">
+      <main className="container-narrow">
         {/* Header */}
         <header id="header" className="mb-24 flex flex-col md:flex-row justify-between items-start gap-8">
           <div className="max-w-xl">
@@ -200,21 +200,21 @@ export default function App() {
           
           {/* Vertical Contact Points */}
           <div className="flex flex-col gap-4 pt-2 shrink-0">
-            <a href="mailto:yook.saera@gmail.com" className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest hover:text-black transition-colors group">
+            <a href="mailto:yook.saera@gmail.com" className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest hover:text-black transition-colors group p-2 -m-2">
               <div className="w-8 h-8 rounded-full border border-line flex items-center justify-center group-hover:border-black transition-colors">
-                <Mail size={14} className="text-muted group-hover:text-black" />
+                <Mail size={14} className="text-muted group-hover:text-black" aria-hidden="true" />
               </div>
               <span>Email</span>
             </a>
-            <a href="https://github.com/saera-yook" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest hover:text-black transition-colors group">
+            <a href="https://github.com/saera-yook" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest hover:text-black transition-colors group p-2 -m-2">
               <div className="w-8 h-8 rounded-full border border-line flex items-center justify-center group-hover:border-black transition-colors">
-                <Github size={14} className="text-muted group-hover:text-black" />
+                <Github size={14} className="text-muted group-hover:text-black" aria-hidden="true" />
               </div>
               <span>GitHub</span>
             </a>
-            <a href="tel:+821000000000" className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest hover:text-black transition-colors group">
+            <a href="tel:+821000000000" className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest hover:text-black transition-colors group p-2 -m-2">
               <div className="w-8 h-8 rounded-full border border-line flex items-center justify-center group-hover:border-black transition-colors">
-                <Phone size={14} className="text-muted group-hover:text-black" />
+                <Phone size={14} className="text-muted group-hover:text-black" aria-hidden="true" />
               </div>
               <span>Contact</span>
             </a>
@@ -224,7 +224,7 @@ export default function App() {
         {/* Projects Section */}
         <section id="projects" className="mb-24">
           <div className="section-label">
-            <span className="opacity-30">01 /</span>
+            <span className="opacity-70">01 /</span>
             <span>Selected Projects</span>
           </div>
           
@@ -258,7 +258,7 @@ export default function App() {
                         법적 근거가 확실한 세무 상담 파이프라인을 구축했습니다. 
                         `setup-vector-store.ts` 스크립트를 통해 데이터 전처리 및 임베딩 과정을 자동화했습니다.
                       </p>
-                      <div className="code-block mono text-[11px] text-slate-500">
+                      <div className="code-block mono text-[11px] text-slate-600">
                         {`// OpenAI Vector Store Setup
 const vectorStore = await openai.beta.vectorStores.create({
   name: "Tax-Free Knowledge Base"
@@ -293,29 +293,29 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                       <span className="section-label !text-[14px] mb-8 block">Engineering Impact</span>
                       <div className="space-y-4">
                         <div className="flex items-center gap-4 py-3 border-b border-slate-100">
-                          <Cpu size={18} className="text-slate-900" />
+                          <Cpu size={18} className="text-slate-900" aria-hidden="true" />
                           <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">AI Model</span>
                           <span className="text-sm text-slate-600">Gemini (Main) / Perplexity (Fallback)</span>
                         </div>
                         <div className="flex items-center gap-4 py-3 border-b border-slate-100">
-                          <Zap size={18} className="text-slate-900" />
+                          <Zap size={18} className="text-slate-900" aria-hidden="true" />
                           <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">Algorithm</span>
                           <span className="text-sm text-slate-600">Dijkstra (19s → 20ms)</span>
                         </div>
                         <div className="flex items-center gap-4 py-3 border-b border-slate-100">
-                          <Shield size={18} className="text-slate-900" />
+                          <Shield size={18} className="text-slate-900" aria-hidden="true" />
                           <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">Reliability</span>
                           <span className="text-sm text-slate-600">Circuit Breaker / Fallback</span>
                         </div>
                         <div className="flex items-center gap-4 py-3 border-b border-slate-100">
-                          <Code2 size={18} className="text-slate-900" />
+                          <Code2 size={18} className="text-slate-900" aria-hidden="true" />
                           <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">Infra</span>
                           <span className="text-sm text-slate-600">AWS Blue-Green / VPC</span>
                         </div>
                       </div>
                       <div className="mt-10">
-                        <a href="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-slate-900 hover:opacity-70 transition-opacity">
-                          <Github size={14} />
+                        <a href="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-slate-900 hover:opacity-70 transition-opacity p-2 -m-2">
+                          <Github size={14} aria-hidden="true" />
                           <span>View Source (Backend)</span>
                         </a>
                       </div>
@@ -349,8 +349,8 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                   <div id="moitz-deep-1" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4">
                       <span className="section-label !text-[14px] shrink-0">Deep Dive: Subway Algorithm Optimization</span>
-                      <a href="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-muted hover:text-black transition-colors">
-                        <Github size={12} />
+                      <a href="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-muted hover:text-black transition-colors p-3 -m-3" aria-label="View Subway Algorithm Implementation on GitHub">
+                        <Github size={12} aria-hidden="true" />
                         <span>View Implementation</span>
                       </a>
                     </div>
@@ -369,15 +369,15 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                         <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🔎 Analysis & Thought Process</h5>
                         <div className="space-y-5">
                           <div className="flex gap-5">
-                            <span className="text-xs font-bold text-slate-400 shrink-0">01</span>
+                            <span className="text-xs font-bold text-muted shrink-0">01</span>
                             <p className="text-sm text-slate-600 leading-relaxed">문제를 재현하는 테스트 코드를 작성하고, 특정 구간(미금→정자)에서 이동 시간이 30초 더 빠른 노선이 선택됨을 확인했습니다.</p>
                           </div>
                           <div className="flex gap-5">
-                            <span className="text-xs font-bold text-slate-400 shrink-0">02</span>
+                            <span className="text-xs font-bold text-muted shrink-0">02</span>
                             <p className="text-sm text-slate-600 leading-relaxed"><strong>가설 설정:</strong> "알고리즘이 구간별 최단 시간에만 치우쳐 전체 환승 비용을 충분히 반영하지 못하고 있다."</p>
                           </div>
                           <div className="flex gap-5">
-                            <span className="text-xs font-bold text-slate-400 shrink-0">03</span>
+                            <span className="text-xs font-bold text-muted shrink-0">03</span>
                             <p className="text-sm text-slate-600 leading-relaxed">Break Point를 통해 추적한 결과, 이동 시간이 동일할 때 탐색 순서상 먼저 방문한 노선을 그대로 유지하는 로직의 허점을 발견했습니다.</p>
                           </div>
                         </div>
@@ -393,11 +393,11 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
 
                       <div className="pt-10 border-t border-slate-200 grid grid-cols-2 gap-12">
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Impact</h5>
+                          <h5 className="text-[10px] font-black uppercase tracking-widest text-muted mb-3">Impact</h5>
                           <p className="text-sm font-bold text-slate-900 leading-tight">실행 시간 19s → 20ms (99.9% 개선). 외부 제약 완전 해소.</p>
                         </div>
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Key Learning</h5>
+                          <h5 className="text-[10px] font-black uppercase tracking-widest text-muted mb-3">Key Learning</h5>
                           <p className="text-sm font-bold text-slate-900 leading-tight">데이터로 증명하고 테스트로 검증하는 논리적 디버깅의 가치.</p>
                         </div>
                       </div>
@@ -436,11 +436,11 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
 
                       <div className="pt-10 border-t border-slate-200 grid grid-cols-2 gap-12">
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Impact</h5>
+                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Impact</h5>
                           <p className="text-sm font-bold text-slate-900 leading-tight">AI 추천 기능 가동률 100% 유지. 장애 상황 자동 대응.</p>
                         </div>
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Key Learning</h5>
+                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Key Learning</h5>
                           <p className="text-sm font-bold text-slate-900 leading-tight">외부 서비스 의존성을 관리하는 방어적 프로그래밍의 중요성.</p>
                         </div>
                       </div>
@@ -479,11 +479,11 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
 
                       <div className="pt-10 border-t border-slate-200 grid grid-cols-2 gap-12">
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Impact</h5>
+                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Impact</h5>
                           <p className="text-sm font-bold text-slate-900 leading-tight">응답 시간 7s → 290ms (96% 단축). 시스템 처리량 대폭 향상.</p>
                         </div>
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Key Learning</h5>
+                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Key Learning</h5>
                           <p className="text-sm font-bold text-slate-900 leading-tight">비동기 프로그래밍을 통한 리소스 활용 최적화의 위력.</p>
                         </div>
                       </div>
@@ -494,8 +494,8 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                   <div id="moitz-deep-4" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4">
                       <span className="section-label !text-[14px] shrink-0">Deep Dive: Resilience4j Circuit Breaker</span>
-                      <a href="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-muted hover:text-black transition-colors">
-                        <Github size={12} />
+                      <a href="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-muted hover:text-black transition-colors p-2 -m-2">
+                        <Github size={12} aria-hidden="true" />
                         <span>View Implementation</span>
                       </a>
                     </div>
@@ -525,11 +525,11 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
 
                       <div className="pt-10 border-t border-slate-200 grid grid-cols-2 gap-12">
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Impact</h5>
+                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Impact</h5>
                           <p className="text-sm font-bold text-slate-900 leading-tight">장애 전파 완전 차단. 외부 요인에 관계없이 서비스 가용성 확보.</p>
                         </div>
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Key Learning</h5>
+                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Key Learning</h5>
                           <p className="text-sm font-bold text-slate-900 leading-tight">분산 시스템에서 결함 내성(Fault Tolerance) 설계의 필수성.</p>
                         </div>
                       </div>
@@ -568,11 +568,11 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
 
                       <div className="pt-10 border-t border-slate-200 grid grid-cols-2 gap-12">
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Impact</h5>
+                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Impact</h5>
                           <p className="text-sm font-bold text-slate-900 leading-tight">배포 시 가동 중단 시간 0ms 달성. 배포 자동화로 운영 효율성 증대.</p>
                         </div>
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-3">Key Learning</h5>
+                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Key Learning</h5>
                           <p className="text-sm font-bold text-slate-900 leading-tight">안정적인 서비스 운영을 위한 인프라 자동화의 핵심적 역할.</p>
                         </div>
                       </div>
@@ -588,7 +588,7 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
         {/* Skills / About */}
         <section id="skills" className="mb-24">
           <div className="section-label">
-            <span className="opacity-30">02 /</span>
+            <span className="opacity-70">02 /</span>
             <span>Technical Focus</span>
           </div>
           <div className="grid md:grid-cols-2 gap-16">
@@ -644,15 +644,15 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
         {/* Experience & Sharing */}
         <section id="experience" className="mb-24">
           <div className="section-label">
-            <span className="opacity-30">03 /</span>
+            <span className="opacity-70">03 /</span>
             <span>Experience & Sharing</span>
           </div>
-          <div className="project-card">
+          <article className="project-card">
             <div className="flex justify-between items-center mb-2">
               <h4 className="text-xl font-bold">YouTube 우아한테크 채널 - [10분 테코톡] 아이나의 서킷브레이커</h4>
-              <a href="https://youtu.be/lddAZUvOUrs?si=Qx58-lz4nSvyBja_" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-muted hover:text-black transition-colors">
+              <a href="https://youtu.be/lddAZUvOUrs?si=Qx58-lz4nSvyBja_" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-muted hover:text-black transition-colors p-3 -m-3" aria-label="보러가기: 아이나의 서킷브레이커 테코톡">
                 <span>보러가기</span>
-                <ArrowUpRight size={16} />
+                <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             </div>
             <p className="text-muted mb-4 leading-relaxed">
@@ -662,19 +662,19 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
               <span className="tag">Public Speaking</span>
               <span className="tag">Circuit Breaker</span>
             </div>
-          </div>
+          </article>
         </section>
 
         {/* Footer */}
         <footer className="pt-12 border-t border-line flex justify-between items-center">
           <span className="text-xs font-bold uppercase tracking-widest text-muted">© 2026 Portfolio</span>
           <div className="flex gap-6 text-sm font-medium">
-            <a href="mailto:yook.saera@gmail.com" className="hover:text-muted transition-colors">Email</a>
-            <a href="https://github.com/saera-yook" target="_blank" rel="noreferrer" className="hover:text-muted transition-colors">GitHub</a>
-            <a href="tel:+821000000000" className="hover:text-muted transition-colors">Contact</a>
+            <a href="mailto:yook.saera@gmail.com" className="hover:text-muted transition-colors p-3 -m-3">Email</a>
+            <a href="https://github.com/saera-yook" target="_blank" rel="noreferrer" className="hover:text-muted transition-colors p-3 -m-3">GitHub</a>
+            <a href="tel:+821000000000" className="hover:text-muted transition-colors p-3 -m-3">Contact</a>
           </div>
         </footer>
-      </div>
+      </main>
     </div>
   );
 }
