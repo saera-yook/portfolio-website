@@ -17,7 +17,9 @@ import {
   Github,
   Phone,
   Shield,
-  Users
+  Users,
+  Ticket,
+  Wrench
 } from "lucide-react";
 
 const ProjectItem = ({ 
@@ -124,8 +126,9 @@ const SideNav = () => {
     { id: "moitz-deep-3", label: "Deep Dive 03", indent: true, sub: true },
     { id: "moitz-deep-4", label: "Deep Dive 04", indent: true, sub: true },
     { id: "moitz-deep-5", label: "Deep Dive 05", indent: true, sub: true },
-    { id: "skills", label: "02 Tech Stack" },
-    { id: "experience", label: "03 Experience" },
+    { id: "tools", label: "02 Tools" },
+    { id: "skills", label: "03 Tech Stack" },
+    { id: "experience", label: "04 Experience" },
   ];
 
   useEffect(() => {
@@ -253,9 +256,17 @@ export default function App() {
                 github="https://github.com/saera-yook"
                 period="2026.02 (1일)"
                 participants="팀 프로젝트 (2인)"
-                image="/tax-free.png"
               details={
-                <div className="bg-slate-50 p-6 rounded-lg border border-slate-100">
+                <div className="space-y-8">
+                  <div className="rounded-xl overflow-hidden border border-line bg-slate-50">
+                    <img 
+                      src="/tax-free.png" 
+                      alt="Tax-Free 프로젝트 스크린샷 (상단 배치 버전)" 
+                      className="w-full h-auto block"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="bg-slate-50 p-6 rounded-lg border border-slate-100">
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
                       <span className="section-label !text-[14px]">Technical Achievement</span>
@@ -286,7 +297,8 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                     </div>
                   </div>
                 </div>
-              }
+              </div>
+            }
             />
           </div>
 
@@ -302,6 +314,14 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                 participants="팀 프로젝트 (BE 4인, FE 2인)"
               details={
                 <div className="space-y-16 mt-12">
+                  <div className="rounded-2xl overflow-hidden border border-line bg-slate-50 mb-16">
+                    <img 
+                      src="/moitz_poster.png" 
+                      alt="Moitz 프로젝트 포스터" 
+                      className="w-full h-auto block"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
                   <div className="grid md:grid-cols-2 gap-16">
                     {/* Engineering Impact */}
                     <div>
@@ -746,13 +766,64 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
         </div>
       </section>
 
-        {/* Skills / About */}
-        <section id="skills" className="mb-24">
+        {/* Tools Section */}
+        <section id="tools" className="mb-32">
           <div className="section-label">
             <span className="opacity-70">02 /</span>
+            <span>Tools</span>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Tool 1: Custom Skills */}
+            <div className="bg-slate-50 rounded-2xl p-8 border border-line hover:border-slate-300 transition-colors group">
+              <div className="flex justify-between items-start mb-6">
+                <div className="p-3 bg-white rounded-xl border border-line group-hover:scale-110 transition-transform">
+                  <Wrench size={24} className="text-slate-900" />
+                </div>
+                <a href="https://github.com/saera-yook/custom-skills" target="_blank" rel="noreferrer" className="text-muted hover:text-black transition-colors">
+                  <Github size={20} />
+                </a>
+              </div>
+              <h5 className="text-lg font-bold mb-3">Custom Skills Library</h5>
+              <p className="text-sm text-muted leading-relaxed mb-6">
+                AI 에이전트의 기능을 확장하기 위한 재사용 가능한 커스텀 스킬 셋입니다. 
+                복잡한 외부 API 연동 로직을 추상화하여 에이전트가 즉시 호출 가능한 형태로 설계했습니다.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white border border-line rounded">AI Tooling</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white border border-line rounded">API Integration</span>
+              </div>
+            </div>
+
+            {/* Tool 2: Java Coupon System */}
+            <div className="bg-slate-50 rounded-2xl p-8 border border-line hover:border-slate-300 transition-colors group">
+              <div className="flex justify-between items-start mb-6">
+                <div className="p-3 bg-white rounded-xl border border-line group-hover:scale-110 transition-transform">
+                  <Ticket size={24} className="text-slate-900" />
+                </div>
+                <a href="https://github.com/saera-yook/java-coupon/tree/saera-yook" target="_blank" rel="noreferrer" className="text-muted hover:text-black transition-colors">
+                  <Github size={20} />
+                </a>
+              </div>
+              <h5 className="text-lg font-bold mb-3">Index Study Docs Automation</h5>
+              <p className="text-sm text-muted leading-relaxed mb-6">
+                인덱스 설계 학습 내용을 문서로 체계적으로 정리하고 기록하는 작업을 자동화하는 스킬입니다. 
+                사용자가 풀이 과정이나 학습 내용을 남겨달라고 요청하면, 문서 폴더와 템플릿을 생성하고 진행 현황이 보이도록 인덱스 문서까지 함께 갱신합니다.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white border border-line rounded">Concurrency Control</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white border border-line rounded">Java</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Skills / About */}
+        <section id="skills" className="mb-32">
+          <div className="section-label">
+            <span className="opacity-70">03 /</span>
             <span>Technical Focus</span>
           </div>
-          <div className="grid md:grid-cols-2 gap-16">
+          <div className="grid md:grid-cols-2 gap-16 mb-20">
             <div>
               <h4 className="text-[14px] font-black uppercase tracking-widest mb-6 text-muted">Backend & Infrastructure</h4>
               <ul className="space-y-6">
@@ -800,12 +871,13 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
               </ul>
             </div>
           </div>
+
         </section>
 
         {/* Experience & Sharing */}
         <section id="experience" className="mb-24">
           <div className="section-label">
-            <span className="opacity-70">03 /</span>
+            <span className="opacity-70">04 /</span>
             <span>Experience & Sharing</span>
           </div>
           <article className="project-card">
