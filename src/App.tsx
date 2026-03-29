@@ -119,14 +119,13 @@ const SideNav = () => {
     { id: "projects", label: "01 Projects" },
     { id: "tax-free", label: "Tax-Free", indent: true },
     { id: "moitz", label: "Moitz", indent: true },
-    { id: "moitz-prompt", label: "Prompt Eng", indent: true, sub: true },
-    { id: "moitz-deep-1", label: "Subway Algo", indent: true, sub: true },
-    { id: "moitz-deep-2", label: "AI Fallback", indent: true, sub: true },
-    { id: "moitz-deep-3", label: "WebClient", indent: true, sub: true },
-    { id: "moitz-deep-4", label: "Resilience4j", indent: true, sub: true },
-    { id: "moitz-deep-5", label: "Blue-Green", indent: true, sub: true },
-    { id: "skills", label: "02 Focus" },
-    { id: "experience", label: "03 Sharing" },
+    { id: "moitz-prompt", label: "Deep Dive 01", indent: true, sub: true },
+    { id: "moitz-deep-1", label: "Deep Dive 02", indent: true, sub: true },
+    { id: "moitz-deep-3", label: "Deep Dive 03", indent: true, sub: true },
+    { id: "moitz-deep-4", label: "Deep Dive 04", indent: true, sub: true },
+    { id: "moitz-deep-5", label: "Deep Dive 05", indent: true, sub: true },
+    { id: "skills", label: "02 Tech Stack" },
+    { id: "experience", label: "03 Experience" },
   ];
 
   useEffect(() => {
@@ -206,9 +205,9 @@ export default function App() {
         {/* Header */}
         <header id="header" className="mb-24 flex flex-col md:flex-row justify-between items-start gap-8">
           <div className="max-w-xl">
-            <h1 className="text-4xl font-black mb-4">Developer Portfolio</h1>
+            <h1 className="text-4xl font-black mb-4">육새라</h1>
             <p className="text-xl text-muted">
-              AI 엔지니어링과 고속 프로토타이핑에 특화된 풀스택 개발자입니다. 
+              AI 엔지니어링과 고속 프로토타이핑에 특화된 개발자입니다.<br />
               기술의 핵심을 파악하고 실질적인 솔루션을 구축합니다.
             </p>
           </div>
@@ -227,7 +226,7 @@ export default function App() {
               </div>
               <span>GitHub</span>
             </a>
-            <a href="tel:+821000000000" className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest hover:text-black transition-colors group p-2 -m-2">
+            <a href="tel:+821055503527" className="flex items-center gap-3 text-xs font-bold uppercase tracking-widest hover:text-black transition-colors group p-2 -m-2">
               <div className="w-8 h-8 rounded-full border border-line flex items-center justify-center group-hover:border-black transition-colors">
                 <Phone size={14} className="text-muted group-hover:text-black" aria-hidden="true" />
               </div>
@@ -240,7 +239,7 @@ export default function App() {
         <section id="projects" className="mb-24">
           <div className="section-label">
             <span className="opacity-70">01 /</span>
-            <span>Selected Projects</span>
+            <span>Projects</span>
           </div>
           
           <div className="space-y-12">
@@ -249,11 +248,11 @@ export default function App() {
               <ProjectItem 
                 title="Tax-Free"
                 description="개인사업자와 프리랜서를 위한 AI 세무 비서. 국세청의 '2025년 세금절약가이드'를 학습한 RAG 기반 지능형 상담 시스템입니다."
-                tags={["AI", "RAG", "Next.js 14", "OpenAI Assistants"]}
+                tags={["AI", "RAG", "Next.js 14", "OpenAI Assistants", "TypeScript"]}
                 link="https://tax-free.vercel.app/"
                 github="https://github.com/saera-yook"
-                period="2025.01 (1일)"
-                participants="개인 프로젝트 (1인)"
+                period="2026.02 (1일)"
+                participants="팀 프로젝트 (2인)"
                 image="/tax-free.png"
               details={
                 <div className="bg-slate-50 p-6 rounded-lg border border-slate-100">
@@ -274,7 +273,7 @@ export default function App() {
                         법적 근거가 확실한 세무 상담 파이프라인을 구축했습니다. 
                         `setup-vector-store.ts` 스크립트를 통해 데이터 전처리 및 임베딩 과정을 자동화했습니다.
                       </p>
-                      <div className="code-block mono text-[11px] text-slate-600">
+                      <div className="code-block mono text-[11px] text-slate-600 whitespace-pre-wrap">
                         {`// OpenAI Vector Store Setup
 const vectorStore = await openai.beta.vectorStores.create({
   name: "Tax-Free Knowledge Base"
@@ -296,11 +295,11 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
               <ProjectItem 
                 title="Moitz (모잇지)"
                 description="모임 멤버들의 출발지와 목적을 기반으로 지리적 중간 지점을 계산하고, LLM 기반 AI 추천을 통해 최적의 장소를 큐레이션하는 서비스입니다."
-                tags={["AI/LLM", "Java", "Spring Boot", "MongoDB", "AWS", "Infrastructure"]}
+                tags={["AI/LLM", "Java", "Spring Boot", "MongoDB", "AWS", "Docker", "Nginx", "GitHub Actions", "CloudWatch"]}
                 link="https://moitz.kr/"
                 github="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod"
-                period="2024.07 - 2024.11 (5개월)"
-                participants="팀 프로젝트 (BE 4인, FE 3인)"
+                period="2025.07 - 2025.11 (5개월)"
+                participants="팀 프로젝트 (BE 4인, FE 2인)"
               details={
                 <div className="space-y-16 mt-12">
                   <div className="grid md:grid-cols-2 gap-16">
@@ -361,26 +360,91 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                     </div>
                   </div>
 
+                  {/* 
+                  <div className="grid md:grid-cols-2 gap-16">
+                    <div>
+                      <span className="section-label !text-[14px] mb-8 block">Engineering Impact</span>
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-4 py-3 border-b border-slate-100">
+                          <Cpu size={18} className="text-slate-900" aria-hidden="true" />
+                          <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">AI Model</span>
+                          <span className="text-sm text-slate-600">Gemini (Main) / Perplexity (Fallback)</span>
+                        </div>
+                        <div className="flex items-center gap-4 py-3 border-b border-slate-100">
+                          <Zap size={18} className="text-slate-900" aria-hidden="true" />
+                          <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">Algorithm</span>
+                          <span className="text-sm text-slate-600">Dijkstra (19s → 20ms)</span>
+                        </div>
+                        <div className="flex items-center gap-4 py-3 border-b border-slate-100">
+                          <Shield size={18} className="text-slate-900" aria-hidden="true" />
+                          <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">Reliability</span>
+                          <span className="text-sm text-slate-600">Circuit Breaker / Fallback</span>
+                        </div>
+                        <div className="flex items-center gap-4 py-3 border-b border-slate-100">
+                          <Code2 size={18} className="text-slate-900" aria-hidden="true" />
+                          <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">Infra</span>
+                          <span className="text-sm text-slate-600">AWS Blue-Green / VPC</span>
+                        </div>
+                      </div>
+                      <div className="mt-10">
+                        <a href="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-slate-900 hover:opacity-70 transition-opacity p-2 -m-2">
+                          <Github size={14} aria-hidden="true" />
+                          <span>View Source (Backend)</span>
+                        </a>
+                      </div>
+                    </div>
+
+                    <div>
+                      <span className="section-label !text-[14px] mb-8 block">Key Contributions</span>
+                      <ul className="space-y-6 text-[15px] text-slate-600 leading-relaxed">
+                        <li className="flex gap-3">
+                          <span className="text-slate-900 font-bold">1.</span>
+                          <span>LLM 응답 안정성을 높이기 위해 프롬프트 엔지니어링</span>
+                        </li>
+                        <li className="flex gap-3">
+                          <span className="text-slate-900 font-bold">2.</span>
+                          <span>핵심 기능인 지하철 이동 경로 조회 로직을 직접 구현해 외부 API 사용 시 19s → 20ms로 단축</span>
+                        </li>
+                        <li className="flex gap-3">
+                          <span className="text-slate-900 font-bold">3.</span>
+                          <span>모임 장소 추천 과정의 카카오맵 API 호출을 Spring WebFlux 기반 비동기·병렬 처리로 최적화해 7s → 290ms로 단축</span>
+                        </li>
+                        <li className="flex gap-3">
+                          <span className="text-slate-900 font-bold">4.</span>
+                          <span>부하 테스트로 CPU 포화 병목을 규명하고 동시성 설정을 튜닝해 CPU 사용률 97% → 80%(17%p 감소)로 절감</span>
+                        </li>
+                        <li className="flex gap-3">
+                          <span className="text-slate-900 font-bold">5.</span>
+                          <span>외부 API 장애로부터 시스템을 보호하기 위해 서킷브레이커 + 재시도를 적용해 응답 실패율을 0%로 낮춤</span>
+                        </li>
+                        <li className="flex gap-3">
+                          <span className="text-slate-900 font-bold">6.</span>
+                          <span>AWS, Docker, Github Actions 등을 활용한 CI/CD 환경 구축</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  */}
+
                   {/* Deep Dive: Prompt Engineering & LLM Control */}
                   <div id="moitz-prompt" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4">
-                      <span className="section-label !text-[14px] shrink-0">Deep Dive: Prompt Engineering & LLM Control</span>
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-muted">Prompt Engineering</span>
+                      <span className="section-label !text-[15px] shrink-0">Deep Dive: Prompt Engineering & LLM Control</span>
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-muted">Prompt Engineering</span>
                     </div>
 
                     <div className="max-w-3xl mx-auto space-y-12">
                       <div className="space-y-4">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🚨 The Problem</h5>
-                        <p className="text-sm text-slate-600 leading-relaxed">
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🚨 The Problem</h5>
+                        <p className="text-[15px] text-slate-600 leading-relaxed">
                           단순 프롬프트만으로는 추천 기준의 일관성 결여, JSON 응답 형식의 불안정성, Hallucination 등의 문제로 서비스 수준의 신뢰성을 확보하기 어려웠습니다. 
                           특히 자연어 생성의 유연성이 시스템 후처리를 방해하는 요소가 되었습니다.
                         </p>
                       </div>
 
                       <div className="space-y-6">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🔎 Analysis & Strategy</h5>
-                        <p className="text-sm text-slate-600 leading-relaxed">
-                          프롬프트를 단순 요청문이 아닌 <strong>'제어 가능한 인터페이스'</strong>로 재정의했습니다. 
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🔎 Analysis & Strategy</h5>
+                        <p className="text-[15px] text-slate-600 leading-relaxed">
                           모델의 자유도를 줄이고 시스템 요구사항에 맞게 추론 과정을 가이드하는 구조적 설계를 전략으로 수립했습니다.
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
@@ -391,7 +455,7 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                             "Few-shot 예시로 응답 패턴 학습",
                             "외부 데이터(Kakao Map) 기반 응답 제한"
                           ].map((item, i) => (
-                            <div key={i} className="flex items-center gap-2 text-xs text-slate-600">
+                            <div key={i} className="flex items-center gap-2 text-[13px] text-slate-600">
                               <div className="w-1 h-1 rounded-full bg-slate-400" />
                               <span>{item}</span>
                             </div>
@@ -400,16 +464,8 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                       </div>
 
                       <div className="space-y-4">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🧩 Implementation: Prompt 발췌</h5>
-                        <div className="rounded-xl overflow-hidden border border-slate-200 mb-4">
-                          <img 
-                            src="https://picsum.photos/seed/prompt/800/450" 
-                            alt="Prompt Engineering Workflow Visualization" 
-                            className="w-full h-auto"
-                            referrerPolicy="no-referrer"
-                          />
-                        </div>
-                        <div className="code-block mono text-[11px] text-slate-600 bg-white">
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🧩 Implementation: Prompt 발췌</h5>
+                        <div className="code-block mono text-[12px] text-slate-600 bg-white whitespace-pre-wrap">
                           {`[역할 정의]
 당신은 서울 지하철 노선과 각 역의 특징에 대해 매우 잘 아는 '만남 장소 추천 전문가' AI입니다.
 
@@ -418,7 +474,11 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
 사용자의 추가 조건을 완벽하게 만족하는 최적의 서울 지하철역을 추천합니다.
 
 [작업 수행 절차]
-1. 출발지 분석 -> 2. 후보 역 탐색 -> 3. 이동 시간 공평성 평가 -> 4. 필터링 -> 5. 최종 추천
+1. 출발지 분석
+2. 후보 역 탐색
+3. 이동 시간 공평성 평가
+4. 필터링
+5. 최종 추천
 
 [출력 형식]
 - 최종 응답은 반드시 아래 JSON 구조를 엄격하게 준수해야 합니다.
@@ -429,22 +489,25 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
 
                       <div className="pt-10 border-t border-slate-200 grid grid-cols-2 gap-12">
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-muted mb-3">Impact</h5>
-                          <p className="text-sm font-bold text-slate-900 leading-tight">추천 일관성 향상 및 JSON 후처리 안정성 확보. Hallucination 위험 최소화.</p>
+                          <h5 className="text-[11px] font-black uppercase tracking-widest text-muted mb-3">Impact</h5>
+                          <p className="text-[15px] font-bold text-slate-900 leading-tight">추천 일관성 향상 및 JSON 후처리 안정성 확보. Hallucination 위험 최소화.</p>
                         </div>
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-muted mb-3">Key Learning</h5>
-                          <p className="text-sm font-bold text-slate-900 leading-tight">자연어의 유연성과 시스템의 견고함 사이의 균형을 잡는 프롬프트 설계의 위력.</p>
+                          <h5 className="text-[11px] font-black uppercase tracking-widest text-muted mb-3">Key Learning</h5>
+                          <p className="text-[15px] font-bold text-slate-900 leading-tight">자연어의 유연성과 시스템의 견고함 사이의 균형을 잡는 프롬프트 설계의 위력.</p>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Deep Dive 1: Subway Algorithm Optimization */}
+                  {/* Deep Dive 02: Subway Algorithm Optimization */}
                   <div id="moitz-deep-1" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4">
-                      <span className="section-label !text-[14px] shrink-0">Deep Dive: Subway Algorithm Optimization</span>
-                      <a href="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-muted hover:text-black transition-colors p-3 -m-3" aria-label="View Subway Algorithm Implementation on GitHub">
+                      <div className="space-y-2">
+                        <span className="section-label !text-[15px] shrink-0">Deep Dive: Subway Data Pipeline & Shortest Path Algorithm</span>
+                        <p className="text-[13px] text-slate-500 font-medium">수도권 지하철 데이터를 수집/정제/적재하여 핵심 기능인 지하철 이동 경로 조회 로직을 직접 구현해 외부 API 사용 시 19s → 20ms로 단축</p>
+                      </div>
+                      <a href="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest text-muted hover:text-black transition-colors p-3 -m-3" aria-label="View Subway Algorithm Implementation on GitHub">
                         <Github size={12} aria-hidden="true" />
                         <span>View Implementation</span>
                       </a>
@@ -452,145 +515,104 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
 
                     <div className="max-w-3xl mx-auto space-y-12">
                       <div className="space-y-4">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🚨 The Problem</h5>
-                        <p className="text-sm text-slate-600 leading-relaxed">
-                          외부 API 의존 시 1회 요청당 최대 30회의 경로 조회가 필요하여 <strong>평균 19초의 지연</strong>이 발생했습니다. 
-                          이를 해결하기 위해 614개 역 데이터를 직접 모델링하여 자체 알고리즘을 구현했으나, 
-                          초기 버전에서 <strong>'불필요한 환승이 포함되는 경로'</strong>를 최단 시간으로 오판하는 결함이 발견되었습니다.
-                        </p>
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🚨 The Problem</h5>
+                        <ul className="text-[15px] text-slate-600 leading-relaxed space-y-1 list-disc list-inside">
+                          <li>초기 빠른 MVP 개발을 위해 지하철 경로 조회 외부 API를 활용</li>
+                          <li>사용자 요청 1회 당 최대 30번의 경로 조회 필요해 평균 19초의 지연 발생</li>
+                        </ul>
                       </div>
 
                       <div className="space-y-6">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🔎 Analysis & Thought Process</h5>
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🔎 Analysis & Thought Process</h5>
+                        
+                        <div className="space-y-5">
+                          <div className="flex gap-5">
+                            <span className="text-[13px] font-bold text-muted shrink-0">01</span>
+                            <p className="text-[15px] text-slate-600 leading-relaxed">비교적 안정적인 다른 API는 비용이 비싸고 장애 가능성이 존재.</p>
+                          </div>
+                          <div className="flex gap-5">
+                            <span className="text-[13px] font-bold text-muted shrink-0">02</span>
+                            <p className="text-[15px] text-slate-600 leading-relaxed">외부 API를 이용하면 비용, Rate Limit, 응답시간, 장애 전파 등 문제 원인이 사라지지 않음</p>
+                          </div>
+                          <div className="flex gap-5">
+                            <span className="text-[13px] font-bold text-muted shrink-0">03</span>
+                            <p className="text-[15px] text-slate-600 leading-relaxed">사용하는 API 종류가 문제가 아니라 외부 API를 사용하는 것 자체가 문제임을 파악</p>
+                          </div>
+                          <div className="flex gap-5">
+                            <span className="text-[13px] font-bold text-muted shrink-0">04</span>
+                            <p className="text-[15px] text-slate-600 leading-relaxed">데이터 내재화 + 자체 알고리즘 구현 방향 선택</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="space-y-4">
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🧩 Solution</h5>
+                        <ul className="text-[15px] text-slate-600 leading-relaxed space-y-1 list-disc list-inside">
+                          <li>PoC로 2개 노선의 지하철 이동 경로 조회 기능을 구현해 실제로 최단 시간 경로를 계산할 수 있는지 가능성 확인</li>
+                          <li>공공데이터포털 API를 이용해 24개 노선, 614개 역에 대해 지하철 이동 시간 데이터 수집/정제/적재 자동화</li>
+                          <li>역 간 연결 관계를 방향 그래프로 모델링
+                            <ul className="pl-6 list-[circle] list-inside">
+                              <li>각 간선에 이동 시간 가중치 부여</li>
+                            </ul>
+                          </li>
+                          <li>다익스트라 알고리즘을 직접 구현하여 최단 시간 이동 경로 계산</li>
+                        </ul>
+                      </div>
                         <div className="rounded-xl overflow-hidden border border-slate-200 mb-6">
                           <img 
-                            src="https://picsum.photos/seed/subway/800/450" 
+                            src="/moitz_subway.png" 
                             alt="Subway Network Graph Analysis" 
                             className="w-full h-auto"
                             referrerPolicy="no-referrer"
                           />
                         </div>
-                        <div className="space-y-5">
-                          <div className="flex gap-5">
-                            <span className="text-xs font-bold text-muted shrink-0">01</span>
-                            <p className="text-sm text-slate-600 leading-relaxed">문제를 재현하는 테스트 코드를 작성하고, 특정 구간(미금→정자)에서 이동 시간이 30초 더 빠른 노선이 선택됨을 확인했습니다.</p>
-                          </div>
-                          <div className="flex gap-5">
-                            <span className="text-xs font-bold text-muted shrink-0">02</span>
-                            <p className="text-sm text-slate-600 leading-relaxed"><strong>가설 설정:</strong> "알고리즘이 구간별 최단 시간에만 치우쳐 전체 환승 비용을 충분히 반영하지 못하고 있다."</p>
-                          </div>
-                          <div className="flex gap-5">
-                            <span className="text-xs font-bold text-muted shrink-0">03</span>
-                            <p className="text-sm text-slate-600 leading-relaxed">Break Point를 통해 추적한 결과, 이동 시간이 동일할 때 탐색 순서상 먼저 방문한 노선을 그대로 유지하는 로직의 허점을 발견했습니다.</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="space-y-4">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🧩 Solution & Trade-off</h5>
-                        <p className="text-sm text-slate-600 leading-relaxed">
-                          모든 구간에서 다음 역까지 고려하는 복잡한 로직 대신, <strong>'복수 노선 후보 저장 및 환승 우선순위 전략'</strong>을 선택했습니다. 
-                          미세한 시간 차이(30초 이내)는 동일 시간으로 간주하고, 실제 경로 구성 시 <strong>환승이 없는 노선을 우선 선택</strong>하도록 로직을 개선하여 정확도와 효율성을 모두 잡았습니다.
-                        </p>
-                      </div>
 
                       <div className="pt-10 border-t border-slate-200 grid grid-cols-2 gap-12">
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-muted mb-3">Impact</h5>
-                          <p className="text-sm font-bold text-slate-900 leading-tight">실행 시간 19s → 20ms (99.9% 개선). 외부 제약 완전 해소.</p>
+                          <h5 className="text-[11px] font-black uppercase tracking-widest text-muted mb-3">Impact</h5>
+                          <p className="text-[15px] font-bold text-slate-900 leading-tight">실행 시간 19s → 20ms (99.9% 개선). 외부 제약 완전 해소.</p>
                         </div>
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-muted mb-3">Key Learning</h5>
-                          <p className="text-sm font-bold text-slate-900 leading-tight">데이터로 증명하고 테스트로 검증하는 논리적 디버깅의 가치.</p>
+                          <h5 className="text-[11px] font-black uppercase tracking-widest text-muted mb-3">Key Learning</h5>
+                          <p className="text-[15px] font-bold text-slate-900 leading-tight">외부 API의 한계를 파악하고 핵심 로직을 직접 구현하여 얻은 압도적인 성능 개선과 시스템 통제권.</p>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Deep Dive 2: LLM Recommendation Engine & Fallback Strategy */}
-                  <div id="moitz-deep-2" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
-                    <div className="flex flex-col md:flex-row justify-between items-start gap-4">
-                      <span className="section-label !text-[14px] shrink-0">Deep Dive: LLM Recommendation & Fallback</span>
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-muted">AI Engineering</span>
-                    </div>
-
-                    <div className="max-w-3xl mx-auto space-y-12">
-                      <div className="space-y-4">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🚨 The Problem</h5>
-                        <p className="text-sm text-slate-600 leading-relaxed">
-                          단일 LLM(Gemini)에 의존할 경우, API 할당량 초과나 일시적인 네트워크 지연 시 서비스 전체의 핵심 기능인 '장소 추천'이 마비되는 리스크가 있었습니다.
-                        </p>
-                      </div>
-
-                      <div className="space-y-6">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🔎 Analysis & Strategy</h5>
-                        <p className="text-sm text-slate-600 leading-relaxed">
-                          추천의 품질(Reasoning)과 응답 속도(Latency) 사이의 균형이 필요했습니다. Gemini는 복잡한 맥락 파악에 능하지만, 장애 상황을 대비한 <strong>'고가용성 아키텍처'</strong>가 필수적이었습니다.
-                        </p>
-                      </div>
-
-                      <div className="space-y-4">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🧩 Solution: Dual-Model Fallback</h5>
-                        <div className="rounded-xl overflow-hidden border border-slate-200 mb-6">
-                          <img 
-                            src="https://picsum.photos/seed/ai/800/450" 
-                            alt="Dual-Model Fallback Architecture" 
-                            className="w-full h-auto"
-                            referrerPolicy="no-referrer"
-                          />
-                        </div>
-                        <p className="text-sm text-slate-600 leading-relaxed">
-                          Gemini를 메인 엔진으로 사용하되, 에러 발생 시 즉시 <strong>Perplexity API로 전환되는 Fallback 로직</strong>을 구현했습니다. 
-                          두 모델의 프롬프트를 표준화하여 사용자 경험의 이질감을 최소화하고, 서킷 브레이커와 연동하여 시스템 안정성을 극대화했습니다.
-                        </p>
-                      </div>
-
-                      <div className="pt-10 border-t border-slate-200 grid grid-cols-2 gap-12">
-                        <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Impact</h5>
-                          <p className="text-sm font-bold text-slate-900 leading-tight">AI 추천 기능 가동률 100% 유지. 장애 상황 자동 대응.</p>
-                        </div>
-                        <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Key Learning</h5>
-                          <p className="text-sm font-bold text-slate-900 leading-tight">외부 서비스 의존성을 관리하는 방어적 프로그래밍의 중요성.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Deep Dive 3: WebClient Async Parallel Processing */}
+                  {/* Deep Dive 03: WebClient Async Parallel Processing */}
                   <div id="moitz-deep-3" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4">
-                      <span className="section-label !text-[14px] shrink-0">Deep Dive: Async Parallel Processing</span>
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-muted">Performance Tuning</span>
+                      <span className="section-label !text-[15px] shrink-0">Deep Dive: Async Parallel Processing</span>
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-muted">Performance Tuning</span>
                     </div>
 
                     <div className="max-w-3xl mx-auto space-y-12">
                       <div className="space-y-4">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🚨 The Problem</h5>
-                        <p className="text-sm text-slate-600 leading-relaxed">
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🚨 The Problem</h5>
+                        <p className="text-[15px] text-slate-600 leading-relaxed">
                           기존 RestTemplate 기반의 동기 호출 방식은 30개 이상의 외부 API를 순차적으로 호출하며 <strong>약 7초의 응답 지연</strong>을 초래했습니다. 이는 실시간 서비스로서 치명적인 사용자 경험 저하를 의미했습니다.
                         </p>
                       </div>
 
                       <div className="space-y-6">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🔎 Analysis & Migration</h5>
-                        <p className="text-sm text-slate-600 leading-relaxed">
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🔎 Analysis & Migration</h5>
+                        <p className="text-[15px] text-slate-600 leading-relaxed">
                           I/O Bound 작업이 주를 이루는 서비스 특성상, 쓰레드 차단(Blocking)을 최소화해야 했습니다. Spring WebFlux의 <strong>WebClient</strong>를 도입하여 비동기 논블로킹 모델로의 전환을 결정했습니다.
                         </p>
                       </div>
 
                       <div className="space-y-4">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🧩 Solution: Reactive Streams</h5>
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🧩 Solution: Reactive Streams</h5>
                         <div className="rounded-xl overflow-hidden border border-slate-200 mb-6">
                           <img 
-                            src="https://picsum.photos/seed/network/800/450" 
+                            src="/moitz_async.png" 
                             alt="Reactive Streams Parallel Processing Flow" 
                             className="w-full h-auto"
                             referrerPolicy="no-referrer"
                           />
                         </div>
-                        <p className="text-sm text-slate-600 leading-relaxed">
+                        <p className="text-[15px] text-slate-600 leading-relaxed">
                           <code>Mono.zip</code>과 <code>Flux.merge</code>를 활용하여 독립적인 API 요청들을 병렬로 처리했습니다. 
                           또한 커스텀 쓰레드 풀을 설정하여 리액티브 스트림의 효율을 극대화하고, 타임아웃 및 재시도 전략을 정교하게 튜닝했습니다.
                         </p>
@@ -598,22 +620,24 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
 
                       <div className="pt-10 border-t border-slate-200 grid grid-cols-2 gap-12">
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Impact</h5>
-                          <p className="text-sm font-bold text-slate-900 leading-tight">응답 시간 7s → 290ms (96% 단축). 시스템 처리량 대폭 향상.</p>
+                          <h5 className="text-[11px] font-black uppercase tracking-widest text-slate-600 mb-3">Impact</h5>
+                          <p className="text-[15px] font-bold text-slate-900 leading-tight">응답 시간 7s → 290ms (96% 단축). 시스템 처리량 대폭 향상.</p>
                         </div>
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Key Learning</h5>
-                          <p className="text-sm font-bold text-slate-900 leading-tight">비동기 프로그래밍을 통한 리소스 활용 최적화의 위력.</p>
+                          <h5 className="text-[11px] font-black uppercase tracking-widest text-slate-600 mb-3">Key Learning</h5>
+                          <p className="text-[15px] font-bold text-slate-900 leading-tight">비동기 프로그래밍을 통한 리소스 활용 최적화의 위력.</p>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Deep Dive 4: Resilience4j Circuit Breaker */}
+                  {/* Deep Dive 04: 외부 API 장애 대응을 위한 예외 처리·서킷브레이커 체계 구축 */}
                   <div id="moitz-deep-4" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4">
-                      <span className="section-label !text-[14px] shrink-0">Deep Dive: Resilience4j Circuit Breaker</span>
-                      <a href="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-muted hover:text-black transition-colors p-2 -m-2">
+                      <div className="space-y-2">
+                        <span className="section-label !text-[15px] shrink-0">Deep Dive: 외부 API 장애 대응을 위한 예외 처리·서킷브레이커 체계 구축</span>
+                      </div>
+                      <a href="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest text-muted hover:text-black transition-colors p-3 -m-3" aria-label="View Implementation on GitHub">
                         <Github size={12} aria-hidden="true" />
                         <span>View Implementation</span>
                       </a>
@@ -621,94 +645,96 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
 
                     <div className="max-w-3xl mx-auto space-y-12">
                       <div className="space-y-4">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🚨 The Problem</h5>
-                        <p className="text-sm text-slate-600 leading-relaxed">
-                          특정 외부 API(예: 구글 맵스)의 응답 지연이나 장애가 발생했을 때, 해당 요청을 기다리는 쓰레드들이 쌓이면서 전체 시스템이 마비되는 <strong>'장애 전파(Cascading Failure)'</strong> 현상이 발생했습니다.
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🚨 문제</h5>
+                        <p className="text-[15px] text-slate-600 leading-relaxed">
+                          서비스는 추천 지역 선정을 위해 LLM API를 포함해 카카오 로컬 API, 공공데이터포털 API 등 여러 외부 시스템을 연동하고 있었습니다. 운영 중 <strong>API 문서와 실제 응답의 불일치, 간헐적 500 응답, 잘못된 JSON 응답, 심지어 HTTP 상태코드 200이지만 본문에 에러 메시지가 포함되는 케이스</strong>까지 발생하면서, 사용자가 에러 화면을 보거나 응답을 오래 기다리는 문제가 생겼습니다. 외부 시스템의 불안정성이 곧바로 서비스 가용성/신뢰도 저하로 이어져, “외부 API 실패를 전제로 한” 일관된 대응 체계가 필요했습니다.
                         </p>
                       </div>
 
                       <div className="space-y-6">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🔎 Analysis & Solution</h5>
-                        <p className="text-sm text-slate-600 leading-relaxed">
-                          장애가 발생한 지점을 즉시 격리하고 시스템의 나머지 부분을 보호하는 메커니즘이 필요했습니다. 이를 위해 <strong>Resilience4j</strong>를 도입하여 서킷 브레이커 패턴을 적용했습니다.
-                        </p>
-                      </div>
-
-                      <div className="space-y-4">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🧩 Implementation Details</h5>
-                        <div className="rounded-xl overflow-hidden border border-slate-200 mb-6">
-                          <img 
-                            src="https://picsum.photos/seed/circuit/800/450" 
-                            alt="Circuit Breaker Implementation Logic" 
-                            className="w-full h-auto"
-                            referrerPolicy="no-referrer"
-                          />
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🧩 해결</h5>
+                        <div className="space-y-6">
+                          <div className="space-y-3">
+                            <h6 className="text-[14px] font-bold text-slate-800">외부 API 예외 처리 표준화</h6>
+                            <ul className="text-[15px] text-slate-600 leading-relaxed space-y-1 list-disc list-inside">
+                              <li>API별 에러 코드를 정의하여 원인 식별을 표준화(예: LLM API: E000x, Kakao API: E002x 등)</li>
+                              <li><strong>응답 본문 파싱</strong>을 통해 HTTP 상태코드만으로 판단하기 어려운 실패(200 + error body)까지 정확히 분류</li>
+                              <li>GlobalExceptionHandler에서 외부 API 예외를 일괄 처리하고, <strong>HTTP 메서드/URI/에러코드/메시지</strong>를 error 레벨로 구조화 로깅</li>
+                            </ul>
+                          </div>
+                          <div className="space-y-3">
+                            <h6 className="text-[14px] font-bold text-slate-800">실패 유형에 따른 복구 전략 적용(재시도 + 서킷브레이커)</h6>
+                            <ul className="text-[15px] text-slate-600 leading-relaxed space-y-1 list-disc list-inside">
+                              <li>장애를 “재시도 가치가 있는 실패”와 “재시도 무의미한 실패”로 구분
+                                <ul className="pl-6 list-[circle] list-inside">
+                                  <li><strong>재시도 가능한 케이스</strong>(네트워크 타임아웃, 500 Internal Server Error 등): 1회 재시도 후, 실패율이 임계치(60%)를 넘으면 서킷브레이커 OPEN 전환</li>
+                                  <li><strong>재시도 무의미한 케이스</strong>(API 키 오류, 쿼터 소진 등): 즉시 서킷브레이커 OPEN 전환으로 불필요한 지연 제거</li>
+                                </ul>
+                              </li>
+                              <li>Resilience4j 서킷브레이커 상태 전이(CLOSED → OPEN → HALF_OPEN → CLOSED)를 활용해 외부 API의 회복 여부를 점진적으로 검증</li>
+                              <li>LLM은 <strong>Gemini를 메인, Perplexity를 Fallback</strong>으로 구성해 장애 상황에서도 응답을 보장</li>
+                            </ul>
+                          </div>
                         </div>
-                        <p className="text-sm text-slate-600 leading-relaxed">
-                          실패율 임계치(Failure Rate Threshold)를 50%로 설정하고, 장애 발생 시 10초간 서킷을 Open하여 불필요한 호출을 차단했습니다. 
-                          서킷이 열린 동안에는 미리 정의된 <strong>Fallback 데이터(캐시된 장소 정보 등)</strong>를 반환하여 최소한의 서비스 기능을 유지하도록 설계했습니다.
-                        </p>
                       </div>
 
                       <div className="pt-10 border-t border-slate-200 grid grid-cols-2 gap-12">
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Impact</h5>
-                          <p className="text-sm font-bold text-slate-900 leading-tight">장애 전파 완전 차단. 외부 요인에 관계없이 서비스 가용성 확보.</p>
+                          <h5 className="text-[11px] font-black uppercase tracking-widest text-muted mb-3">Impact</h5>
+                          <ul className="text-[15px] font-bold text-slate-900 leading-tight space-y-2">
+                            <li>테스트 환경에서 <strong>외부 LLM 장애로 인한 실패율 0%</strong>를 달성했고, 운영에서도 LLM 장애로 인한 실패 응답이 발생하지 않음</li>
+                            <li>로그만 확인해도 “어떤 외부 API가, 어떤 이유(에러 코드)로 실패했는지” 즉시 파악 가능해져 <strong>장애 대응 시간 단축</strong></li>
+                            <li>외부 의존성에서 발생하는 문제를 <strong>표준화된 코드·로깅·복구 전략</strong>으로 흡수하여 서비스 연속성을 확보</li>
+                          </ul>
                         </div>
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Key Learning</h5>
-                          <p className="text-sm font-bold text-slate-900 leading-tight">분산 시스템에서 결함 내성(Fault Tolerance) 설계의 필수성.</p>
+                          <h5 className="text-[11px] font-black uppercase tracking-widest text-muted mb-3">Key Learning</h5>
+                          <p className="text-[15px] font-bold text-slate-900 leading-tight">
+                            <strong>외부 시스템은 언제든 실패할 수 있다</strong>는 전제를 설계에 반영해야 한다는 원칙을 체득했습니다. 특히 “예외 분류(원인 식별)”가 선행되어야 “재시도/서킷브레이커/폴백” 같은 복구 전략이 효과적으로 작동한다는 점을 이해했고, 이 패턴이 결제·메시징·지도 등 다양한 외부 연동에도 확장 가능하다는 확신을 얻었습니다.
+                          </p>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Deep Dive 5: Infrastructure & CI/CD Automation */}
+                  {/* Deep Dive 05: Infrastructure & CI/CD Automation */}
                   <div id="moitz-deep-5" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4">
-                      <span className="section-label !text-[14px] shrink-0">Deep Dive: Infrastructure & CI/CD</span>
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-muted">DevOps & Cloud</span>
+                      <span className="section-label !text-[15px] shrink-0">Deep Dive: Infrastructure & CI/CD</span>
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-muted">DevOps & Cloud</span>
                     </div>
 
                     <div className="max-w-3xl mx-auto space-y-12">
                       <div className="space-y-4">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🚨 The Problem</h5>
-                        <p className="text-sm text-slate-600 leading-relaxed">
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🚨 The Problem</h5>
+                        <p className="text-[15px] text-slate-600 leading-relaxed">
                           수동 배포 방식은 휴먼 에러의 위험이 크고, 배포 시마다 수 분간의 서비스 중단이 발생하여 실시간 사용자 협업이 중요한 서비스 특성상 큰 제약이 되었습니다.
                         </p>
                       </div>
 
                       <div className="space-y-6">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🔎 Analysis & Strategy</h5>
-                        <p className="text-sm text-slate-600 leading-relaxed">
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🔎 Analysis & Strategy</h5>
+                        <p className="text-[15px] text-slate-600 leading-relaxed">
                           코드 변경 사항을 즉각적으로 검증하고 안전하게 배포할 수 있는 자동화 파이프라인이 필요했습니다. 특히, 사용자에게 영향을 주지 않는 <strong>무중단 배포(Zero-Downtime Deployment)</strong> 환경 구축을 목표로 설정했습니다.
                         </p>
                       </div>
 
                       <div className="space-y-4">
-                        <h5 className="text-xs font-black uppercase tracking-widest text-slate-900">🧩 Solution: Blue-Green Deployment</h5>
-                        <div className="rounded-xl overflow-hidden border border-slate-200 mb-6">
-                          <img 
-                            src="https://picsum.photos/seed/cloud/800/450" 
-                            alt="Blue-Green Deployment Strategy Diagram" 
-                            className="w-full h-auto"
-                            referrerPolicy="no-referrer"
-                          />
-                        </div>
-                        <p className="text-sm text-slate-600 leading-relaxed">
-                          GitHub Actions를 활용하여 빌드 및 테스트를 자동화하고, NCP(Naver Cloud Platform)의 로드 밸런서를 제어하여 <strong>Blue-Green 배포</strong>를 구현했습니다. 
-                          새로운 버전(Green)이 정상 가동됨을 확인한 후 트래픽을 일괄 전환함으로써 배포 리스크를 최소화했습니다.
-                        </p>
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🧩 Solution: Blue-Green Deployment</h5>
+                          <p className="text-[15px] text-slate-600 leading-relaxed">
+                            GitHub Actions를 활용하여 빌드 및 테스트를 자동화하고, NCP(Naver Cloud Platform)의 로드 밸런서를 제어하여 <strong>Blue-Green 배포</strong>를 구현했습니다. 
+                            새로운 버전(Green)이 정상 가동됨을 확인한 후 트래픽을 일괄 전환함으로써 배포 리스크를 최소화했습니다.
+                          </p>
                       </div>
 
                       <div className="pt-10 border-t border-slate-200 grid grid-cols-2 gap-12">
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Impact</h5>
-                          <p className="text-sm font-bold text-slate-900 leading-tight">배포 시 가동 중단 시간 0ms 달성. 배포 자동화로 운영 효율성 증대.</p>
+                          <h5 className="text-[11px] font-black uppercase tracking-widest text-slate-600 mb-3">Impact</h5>
+                          <p className="text-[15px] font-bold text-slate-900 leading-tight">배포 시 가동 중단 시간 0ms 달성. 배포 자동화로 운영 효율성 증대.</p>
                         </div>
                         <div>
-                          <h5 className="text-[10px] font-black uppercase tracking-widest text-slate-600 mb-3">Key Learning</h5>
-                          <p className="text-sm font-bold text-slate-900 leading-tight">안정적인 서비스 운영을 위한 인프라 자동화의 핵심적 역할.</p>
+                          <h5 className="text-[11px] font-black uppercase tracking-widest text-slate-600 mb-3">Key Learning</h5>
+                          <p className="text-[15px] font-bold text-slate-900 leading-tight">안정적인 서비스 운영을 위한 인프라 자동화의 핵심적 역할.</p>
                         </div>
                       </div>
                     </div>
