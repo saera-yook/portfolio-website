@@ -18,7 +18,7 @@ import {
   Phone,
   Shield,
   Users,
-  Ticket,
+  FileText,
   Wrench
 } from "lucide-react";
 
@@ -527,10 +527,7 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                         <span className="section-label !text-[15px] shrink-0">Deep Dive: Subway Data Pipeline & Shortest Path Algorithm</span>
                         <p className="text-[13px] text-slate-500 font-medium">수도권 지하철 데이터를 수집/정제/적재하여 핵심 기능인 지하철 이동 경로 조회 로직을 직접 구현해 외부 API 사용 시 19s → 20ms로 단축</p>
                       </div>
-                      <a href="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest text-muted hover:text-black transition-colors p-3 -m-3" aria-label="View Subway Algorithm Implementation on GitHub">
-                        <Github size={12} aria-hidden="true" />
-                        <span>View Implementation</span>
-                      </a>
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-muted">Data & Algorithm</span>
                     </div>
 
                     <div className="max-w-3xl mx-auto space-y-12">
@@ -624,18 +621,18 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
 
                       <div className="space-y-4">
                         <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🧩 Solution: Reactive Streams</h5>
-                        <div className="rounded-xl overflow-hidden border border-slate-200 mb-6">
-                          <img 
-                            src="/moitz_async.png" 
-                            alt="Reactive Streams Parallel Processing Flow" 
-                            className="w-full h-auto"
-                            referrerPolicy="no-referrer"
-                          />
-                        </div>
                         <p className="text-[15px] text-slate-600 leading-relaxed">
                           <code>Mono.zip</code>과 <code>Flux.merge</code>를 활용하여 독립적인 API 요청들을 병렬로 처리했습니다. 
                           또한 커스텀 쓰레드 풀을 설정하여 리액티브 스트림의 효율을 극대화하고, 타임아웃 및 재시도 전략을 정교하게 튜닝했습니다.
                         </p>
+                        <div className="rounded-xl overflow-hidden border border-slate-200 mb-6">
+                          <img
+                            src="/moitz_async.png"
+                            alt="Reactive Streams Parallel Processing Flow"
+                            className="w-full h-auto"
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
                       </div>
 
                       <div className="pt-10 border-t border-slate-200 grid grid-cols-2 gap-12">
@@ -657,10 +654,7 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                       <div className="space-y-2">
                         <span className="section-label !text-[15px] shrink-0">Deep Dive: 외부 API 장애 대응을 위한 예외 처리·서킷브레이커 체계 구축</span>
                       </div>
-                      <a href="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest text-muted hover:text-black transition-colors p-3 -m-3" aria-label="View Implementation on GitHub">
-                        <Github size={12} aria-hidden="true" />
-                        <span>View Implementation</span>
-                      </a>
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-muted">Fault Tolerance</span>
                     </div>
 
                     <div className="max-w-3xl mx-auto space-y-12">
@@ -785,12 +779,14 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
               </div>
               <h5 className="text-lg font-bold mb-3">Custom Skills Library</h5>
               <p className="text-sm text-muted leading-relaxed mb-6">
-                AI 에이전트의 기능을 확장하기 위한 재사용 가능한 커스텀 스킬 셋입니다. 
-                복잡한 외부 API 연동 로직을 추상화하여 에이전트가 즉시 호출 가능한 형태로 설계했습니다.
+                AI 에이전트의 기능을 확장하기 위한 재사용 가능한 커스텀 스킬 셋입니다.
+                DDD/헥사고날 아키텍처 설계 가이드와 Spring Boot JPA CRUD 스캐폴딩 템플릿을 에이전트가 일관되게 실행할 수 있는 스킬 형태로 패키징했습니다.
               </p>
               <div className="flex flex-wrap gap-2">
                 <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white border border-line rounded">AI Tooling</span>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white border border-line rounded">API Integration</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white border border-line rounded">Domain Modeling</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white border border-line rounded">Code Generation</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white border border-line rounded">Arch Decision</span>
               </div>
             </div>
 
@@ -798,7 +794,7 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
             <div className="bg-slate-50 rounded-2xl p-8 border border-line hover:border-slate-300 transition-colors group">
               <div className="flex justify-between items-start mb-6">
                 <div className="p-3 bg-white rounded-xl border border-line group-hover:scale-110 transition-transform">
-                  <Ticket size={24} className="text-slate-900" />
+                  <FileText size={24} className="text-slate-900" />
                 </div>
                 <a href="https://github.com/saera-yook/java-coupon/tree/saera-yook" target="_blank" rel="noreferrer" className="text-muted hover:text-black transition-colors">
                   <Github size={20} />
@@ -810,8 +806,9 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                 사용자가 풀이 과정이나 학습 내용을 남겨달라고 요청하면, 문서 폴더와 템플릿을 생성하고 진행 현황이 보이도록 인덱스 문서까지 함께 갱신합니다.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white border border-line rounded">Concurrency Control</span>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white border border-line rounded">Java</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white border border-line rounded">Documentation</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white border border-line rounded">Automation</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white border border-line rounded">Index Design</span>
               </div>
             </div>
           </div>
