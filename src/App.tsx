@@ -16,7 +16,8 @@ import {
   Mail,
   Github,
   Phone,
-  Shield
+  Shield,
+  Users
 } from "lucide-react";
 
 const ProjectItem = ({ 
@@ -25,14 +26,18 @@ const ProjectItem = ({
   tags, 
   link, 
   github,
-  details 
+  details,
+  period,
+  participants
 }: { 
   title: string, 
   description: string, 
   tags: string[], 
   link?: string,
   github?: string,
-  details?: React.ReactNode
+  details?: React.ReactNode,
+  period?: string,
+  participants?: string
 }) => (
   <div className="project-card">
     <div className="flex justify-between items-start mb-2">
@@ -58,8 +63,26 @@ const ProjectItem = ({
         )}
       </div>
     </div>
-    <div className="flex gap-2 mb-4">
-      {tags.map(tag => <span key={tag} className="tag">{tag}</span>)}
+    <div className="flex flex-col gap-3 mb-6">
+      {(period || participants) && (
+        <div className="flex items-center gap-4 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+          {period && (
+            <div className="flex items-center gap-1.5">
+              <Clock size={12} />
+              <span>{period}</span>
+            </div>
+          )}
+          {participants && (
+            <div className="flex items-center gap-1.5">
+              <Users size={12} />
+              <span>{participants}</span>
+            </div>
+          )}
+        </div>
+      )}
+      <div className="flex flex-wrap gap-2">
+        {tags.map(tag => <span key={tag} className="tag">{tag}</span>)}
+      </div>
     </div>
     <p className="text-muted text-lg mb-6 leading-relaxed">
       {description}
@@ -220,6 +243,8 @@ export default function App() {
                 tags={["AI", "RAG", "Next.js 14", "OpenAI Assistants"]}
                 link="https://tax-free.vercel.app/"
                 github="https://github.com/saera-yook"
+                period="2025.01 (1일)"
+                participants="개인 프로젝트 (1인)"
               details={
                 <div className="bg-slate-50 p-6 rounded-lg border border-slate-100">
                   <div className="grid md:grid-cols-2 gap-8">
@@ -264,6 +289,8 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                 tags={["AI/LLM", "Java", "Spring Boot", "MongoDB", "AWS", "Infrastructure"]}
                 link="https://moitz.kr/"
                 github="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod"
+                period="2024.07 - 2024.11 (5개월)"
+                participants="팀 프로젝트 (BE 4인, FE 3인)"
               details={
                 <div className="space-y-16 mt-12">
                   <div className="grid md:grid-cols-2 gap-16">
