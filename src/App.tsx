@@ -333,14 +333,14 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                           <span className="text-sm text-slate-600">Gemini (Main) / Perplexity (Fallback)</span>
                         </div>
                         <div className="flex items-center gap-4 py-3 border-b border-slate-100">
-                          <Zap size={18} className="text-slate-900" aria-hidden="true" />
-                          <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">Algorithm</span>
-                          <span className="text-sm text-slate-600">Dijkstra (19s → 20ms)</span>
-                        </div>
-                        <div className="flex items-center gap-4 py-3 border-b border-slate-100">
                           <Shield size={18} className="text-slate-900" aria-hidden="true" />
                           <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">Reliability</span>
                           <span className="text-sm text-slate-600">Circuit Breaker / Fallback</span>
+                        </div>
+                        <div className="flex items-center gap-4 py-3 border-b border-slate-100">
+                          <Zap size={18} className="text-slate-900" aria-hidden="true" />
+                          <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">Algorithm</span>
+                          <span className="text-sm text-slate-600">Dijkstra (19s → 20ms)</span>
                         </div>
                         <div className="flex items-center gap-4 py-3 border-b border-slate-100">
                           <Code2 size={18} className="text-slate-900" aria-hidden="true" />
@@ -362,95 +362,33 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                       <ul className="space-y-6 text-[15px] text-slate-600 leading-relaxed">
                         <li className="flex gap-3">
                           <span className="text-slate-900 font-bold">•</span>
-                          <span><strong>LLM 기반 장소 추천 엔진을 구축하고</strong>, Gemini(메인)와 Perplexity(폴백)를 연동하여 외부 API 장애 시에도 중단 없는 AI 추천 기능을 보장했습니다.</span>
+                          <span>LLM 기반 AI 장소 추천 엔진 구축</span>
                         </li>
                         <li className="flex gap-3">
                           <span className="text-slate-900 font-bold">•</span>
-                          <span>외부 API 의존성을 제거하고 <strong>614개 역 데이터를 기반으로 지하철 최단 경로 알고리즘(Dijkstra)을 직접 구현</strong>하여 성능을 99.9% 개선했습니다.</span>
+                          <span>서킷브레이커 패턴 및 AI 모델 이중화 구성으로 LLM 연동 안정성 확보</span>
                         </li>
                         <li className="flex gap-3">
                           <span className="text-slate-900 font-bold">•</span>
-                          <span>RestTemplate에서 <strong>WebClient 비동기 병렬 처리</strong>로 전환하여 외부 API 호출 응답 시간을 96% 단축했습니다.</span>
+                          <span>지하철 데이터 파이프라인 구축 및 최단 경로 자체 구현</span>
                         </li>
                         <li className="flex gap-3">
                           <span className="text-slate-900 font-bold">•</span>
-                          <span><strong>Resilience4j 서킷 브레이커</strong>를 도입하여 외부 API 장애 시에도 서비스 연속성을 확보하고 Fallback 전략을 구축했습니다.</span>
+                          <span>WebClient 비동기 병렬 처리 도입</span>
+                        </li>
+                        <li className="flex gap-3">
+                          <span className="text-slate-900 font-bold">•</span>
+                          <span>Blue-Green 무중단 배포 구축</span>
                         </li>
                       </ul>
                     </div>
                   </div>
-
-                  {/* 
-                  <div className="grid md:grid-cols-2 gap-16">
-                    <div>
-                      <span className="section-label !text-[14px] mb-8 block">Engineering Impact</span>
-                      <div className="space-y-4">
-                        <div className="flex items-center gap-4 py-3 border-b border-slate-100">
-                          <Cpu size={18} className="text-slate-900" aria-hidden="true" />
-                          <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">AI Model</span>
-                          <span className="text-sm text-slate-600">Gemini (Main) / Perplexity (Fallback)</span>
-                        </div>
-                        <div className="flex items-center gap-4 py-3 border-b border-slate-100">
-                          <Zap size={18} className="text-slate-900" aria-hidden="true" />
-                          <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">Algorithm</span>
-                          <span className="text-sm text-slate-600">Dijkstra (19s → 20ms)</span>
-                        </div>
-                        <div className="flex items-center gap-4 py-3 border-b border-slate-100">
-                          <Shield size={18} className="text-slate-900" aria-hidden="true" />
-                          <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">Reliability</span>
-                          <span className="text-sm text-slate-600">Circuit Breaker / Fallback</span>
-                        </div>
-                        <div className="flex items-center gap-4 py-3 border-b border-slate-100">
-                          <Code2 size={18} className="text-slate-900" aria-hidden="true" />
-                          <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">Infra</span>
-                          <span className="text-sm text-slate-600">AWS Blue-Green / VPC</span>
-                        </div>
-                      </div>
-                      <div className="mt-10">
-                        <a href="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-slate-900 hover:opacity-70 transition-opacity p-2 -m-2">
-                          <Github size={14} aria-hidden="true" />
-                          <span>View Source (Backend)</span>
-                        </a>
-                      </div>
-                    </div>
-
-                    <div>
-                      <span className="section-label !text-[14px] mb-8 block">Key Contributions</span>
-                      <ul className="space-y-6 text-[15px] text-slate-600 leading-relaxed">
-                        <li className="flex gap-3">
-                          <span className="text-slate-900 font-bold">1.</span>
-                          <span>LLM 응답 안정성을 높이기 위해 프롬프트 엔지니어링</span>
-                        </li>
-                        <li className="flex gap-3">
-                          <span className="text-slate-900 font-bold">2.</span>
-                          <span>핵심 기능인 지하철 이동 경로 조회 로직을 직접 구현해 외부 API 사용 시 19s → 20ms로 단축</span>
-                        </li>
-                        <li className="flex gap-3">
-                          <span className="text-slate-900 font-bold">3.</span>
-                          <span>모임 장소 추천 과정의 카카오맵 API 호출을 Spring WebFlux 기반 비동기·병렬 처리로 최적화해 7s → 290ms로 단축</span>
-                        </li>
-                        <li className="flex gap-3">
-                          <span className="text-slate-900 font-bold">4.</span>
-                          <span>부하 테스트로 CPU 포화 병목을 규명하고 동시성 설정을 튜닝해 CPU 사용률 97% → 80%(17%p 감소)로 절감</span>
-                        </li>
-                        <li className="flex gap-3">
-                          <span className="text-slate-900 font-bold">5.</span>
-                          <span>외부 API 장애로부터 시스템을 보호하기 위해 서킷브레이커 + 재시도를 적용해 응답 실패율을 0%로 낮춤</span>
-                        </li>
-                        <li className="flex gap-3">
-                          <span className="text-slate-900 font-bold">6.</span>
-                          <span>AWS, Docker, Github Actions 등을 활용한 CI/CD 환경 구축</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  */}
 
                   {/* Deep Dive: Prompt Engineering & LLM Control */}
                   <div id="moitz-prompt" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4">
-                      <span className="section-label !text-[15px] shrink-0">Deep Dive: Prompt Engineering & LLM Control</span>
-                      <span className="text-[11px] font-bold uppercase tracking-widest text-muted">Prompt Engineering</span>
+                      <span className="section-label !text-[15px] shrink-0">Deep Dive 01: <br />Prompt Engineering</span>
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-muted">LLM Reliability</span>
                     </div>
 
                     <div className="max-w-3xl mx-auto space-y-12">
@@ -524,7 +462,79 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                   <div id="moitz-deep-1" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4">
                       <div className="space-y-2">
-                        <span className="section-label !text-[15px] shrink-0">Deep Dive: Subway Data Pipeline & Shortest Path Algorithm</span>
+                        <span className="section-label !text-[15px] shrink-0">Deep Dive 02: <br />LLM Control & Circuit Breaker</span>
+                        <p className="text-[14px] text-slate-500 font-medium">LLM API 장애로부터 시스템을 보호하기 위해 서킷브레이커 패턴과 재시도 로직을 적용해 응답 실패율 0% 달성</p>
+                      </div>
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-muted">Fault Tolerance</span>
+                    </div>
+
+                    <div className="max-w-3xl mx-auto space-y-12">
+                      <div className="space-y-4">
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🚨 The Problem</h5>
+                        <ul className="text-[15px] text-slate-600 leading-relaxed space-y-1 list-disc list-inside">
+                          <li>LLM API 응답 불안정(간헐적 500, JSON 형식 오류 등)으로 사용자 에러 및 지연 발생</li>
+                          <li>외부 시스템의 불안정성이 곧바로 서비스 가용성/신뢰도 저하로 이어짐</li>
+                        </ul>
+                      </div>
+
+                      <div className="space-y-6">
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🔎 Analysis & Thought Process</h5>
+
+                        <div className="space-y-5">
+                          <div className="flex gap-5">
+                            <span className="text-[13px] font-bold text-muted shrink-0">01</span>
+                            <p className="text-[15px] text-slate-600 leading-relaxed">특정 API를 교체해도 외부 의존성 자체가 사라지지 않음. "실패를 전제로 한" 대응 체계 설계가 근본 해결책</p>
+                          </div>
+                          <div className="flex gap-5">
+                            <span className="text-[13px] font-bold text-muted shrink-0">02</span>
+                            <p className="text-[15px] text-slate-600 leading-relaxed">예외 원인을 먼저 분류(표준화)해야 재시도·서킷브레이커·폴백 같은 복구 전략이 효과적으로 작동</p>
+                          </div>
+                          <div className="flex gap-5">
+                            <span className="text-[13px] font-bold text-muted shrink-0">03</span>
+                            <p className="text-[15px] text-slate-600 leading-relaxed">실패 유형(재시도 가능/불가)에 따라 서킷브레이커 전환 시점을 다르게 적용해야 불필요한 지연 제거 가능</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="space-y-4">
+                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🧩 Solution</h5>
+                        <ul className="text-[15px] text-slate-600 leading-relaxed space-y-1 list-disc list-inside">
+                          <li><strong>실패 유형에 따른 복구 전략 적용(재시도 + 서킷브레이커)</strong></li>
+                            <ul className="pl-6 list-[circle] list-inside">
+                              <li><strong>재시도 가능한 케이스</strong>(타임아웃, 500 등): 1회 재시도 후 실패율 60% 초과 시 서킷브레이커 OPEN 전환</li>
+                              <li><strong>재시도 무의미한 케이스</strong>(API 키 오류, 쿼터 소진 등): 즉시 OPEN 전환으로 불필요한 지연 제거</li>
+                              <li>Resilience4j 서킷브레이커 상태 전이로 외부 API 회복 여부 점진적 검증</li>
+                              <li>LLM은 Gemini(메인) + Perplexity(Fallback)로 이중화하여 장애 시에도 응답 보장</li>
+                            </ul>
+                          <li><strong>외부 API 예외 처리 표준화</strong></li>
+                            <ul className="pl-6 list-[circle] list-inside">
+                              <li>API별 에러 코드 정의로 원인 식별 표준화(LLM API: E000x, Kakao API: E002x 등)</li>
+                              <li>GlobalExceptionHandler에서 일괄 처리 및 HTTP 메서드/URI/에러코드/메시지를 error 레벨로 구조화 로깅</li>
+                            </ul>
+                        </ul>
+                      </div>
+
+                      <div className="pt-10 border-t border-slate-200 grid grid-cols-2 gap-12">
+                        <div>
+                          <h5 className="text-[11px] font-black uppercase tracking-widest text-muted mb-3">Impact</h5>
+                          <ul className="text-[15px] font-bold text-slate-900 leading-tight space-y-2">
+                            <li>LLM 장애로 인한 실패율 0% 달성. 서비스 연속성 확보.</li>
+                            <li>로그로 에러 원인 즉시 파악 가능해져 장애 대응 시간 단축</li>
+                          </ul>
+                        </div>
+                        <div>
+                          <h5 className="text-[11px] font-black uppercase tracking-widest text-muted mb-3">Key Learning</h5>
+                          <p className="text-[15px] font-bold text-slate-900 leading-tight">외부 시스템은 언제든 실패할 수 있다는 전제를 설계에 반영해야 한다는 원칙을 체득</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Deep Dive 03: WebClient Async Parallel Processing */}
+                  <div id="moitz-deep-3" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
+                    <div className="flex flex-col md:flex-row justify-between items-start gap-4">
+                      <div className="space-y-2">
+                        <span className="section-label !text-[15px] shrink-0">Deep Dive 03: <br />Subway Data Pipeline & Dijkstra Algorithm</span>
                         <p className="text-[14px] text-slate-500 font-medium">수도권 지하철 데이터를 수집/정제/적재하여 핵심 기능인 지하철 이동 경로 조회 로직을 직접 구현해 외부 API 사용 시 19s → 20ms로 단축</p>
                       </div>
                       <span className="text-[11px] font-bold uppercase tracking-widest text-muted">Data & Algorithm</span>
@@ -597,28 +607,27 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                     </div>
                   </div>
 
-                  {/* Deep Dive 03: WebClient Async Parallel Processing */}
-                  <div id="moitz-deep-3" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
+                  {/* Deep Dive 04: 외부 API 장애 대응을 위한 예외 처리·서킷브레이커 체계 구축 */}
+                  <div id="moitz-deep-4" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4">
                       <div className="space-y-2">
-                                              <span className="section-label !text-[15px] shrink-0">Deep Dive: Async Parallel Processing</span>
-                                              <p className="text-[14px] text-slate-500 font-medium">모임 장소 추천 시 카카오맵 API 호출을 Spring WebFlux 기반 비동기-병렬 처리로 최적화하여 7s → 290ms로 단축(96% 개선)</p>
-                                            </div>
-                      <span className="text-[11px] font-bold uppercase tracking-widest text-muted">Performance Tuning</span>
+                        <span className="section-label !text-[15px] shrink-0">Deep Dive 04: <br />Async Parallel Processing</span>
+                        <p className="text-[14px] text-slate-500 font-medium">모임 장소 추천 시 카카오맵 API 호출을 Spring WebFlux 기반 비동기-병렬 처리로 최적화하여 7s → 290ms로 단축(96% 개선)</p>
+                      </div>
+                        <span className="text-[11px] font-bold uppercase tracking-widest text-muted">Performance Tuning</span>
                     </div>
 
                     <div className="max-w-3xl mx-auto space-y-12">
                       <div className="space-y-4">
                         <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🚨 The Problem</h5>
                         <ul className="text-[15px] text-slate-600 leading-relaxed space-y-1 list-disc list-inside">
-                                              <li>사용자 요청 1회당 최대 260번의 외부 API 호출 필요</li>
-                                                <ul className="pl-6 list-[circle] list-inside">
-                                                  <li>카카오맵 장소 검색 API 호출 최대 75회(추천 지역 5개 × 검색 키워드 15개)</li>
-                                                  <li>이미지 검색 API 호출 최대 185회(추천 지역 5개 × 추천 장소 37개)</li>
-                                                </ul>
-                                                <li>RestTemplate 사용 시 최대 260회의 API 호출을 순차 처리하면서 평균 7초의 지연 발생</li>
-
-                                              </ul>
+                          <li>사용자 요청 1회당 최대 260번의 외부 API 호출 필요</li>
+                            <ul className="pl-6 list-[circle] list-inside">
+                              <li>카카오맵 장소 검색 API 호출 최대 75회(추천 지역 5개 × 검색 키워드 15개)</li>
+                              <li>이미지 검색 API 호출 최대 185회(추천 지역 5개 × 추천 장소 37개)</li>
+                            </ul>
+                          <li>RestTemplate 사용 시 최대 260회의 API 호출을 순차 처리하면서 평균 7초의 지연 발생</li>
+                        </ul>
                       </div>
 
                       <div className="space-y-6">
@@ -631,15 +640,14 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                       <div className="space-y-4">
                         <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🧩 Solution: Reactive Streams</h5>
                         <ul className="text-[15px] text-slate-600 leading-relaxed space-y-1 list-disc list-inside">
-                                                                      <li>RestTemplate을 WebClient 기반 비동기 HTTP 클라이언트로 전환하여 논블로킹 I/O 구현</li>
-                                                                      <li>Reactor의 Flux와 flatMap을 활용해 모든 API 호출을 병렬로 처리하도록 구조 개선</li>
-                                                                        <ul className="pl-6 list-[circle] list-inside">
-                                                                          <li>지역별 장소 검색 요청을 Flux로 생성하고, flatMap으로 각 요청을 비동기로 실행</li>
-                                                                          <li>장소별 이미지 검색 요청도 동일한 방식으로 병렬화</li>
-                                                                        </ul>
-                                                                        <li>모든 비동기 호출이 완료될 때까지 기다리는 collectList() 를 통해 최종 결과 수집</li>
-
-                                                                      </ul>
+                          <li>RestTemplate을 WebClient 기반 비동기 HTTP 클라이언트로 전환하여 논블로킹 I/O 구현</li>
+                          <li>Reactor의 Flux와 flatMap을 활용해 모든 API 호출을 병렬로 처리하도록 구조 개선</li>
+                            <ul className="pl-6 list-[circle] list-inside">
+                              <li>지역별 장소 검색 요청을 Flux로 생성하고, flatMap으로 각 요청을 비동기로 실행</li>
+                              <li>장소별 이미지 검색 요청도 동일한 방식으로 병렬화</li>
+                            </ul>
+                          <li>모든 비동기 호출이 완료될 때까지 기다리는 collectList() 를 통해 최종 결과 수집</li>
+                        </ul>
                         <div className="rounded-xl overflow-hidden border border-slate-200 mb-6">
                           <img
                             src="/moitz_async.png"
@@ -663,73 +671,10 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                     </div>
                   </div>
 
-                  {/* Deep Dive 04: 외부 API 장애 대응을 위한 예외 처리·서킷브레이커 체계 구축 */}
-                  <div id="moitz-deep-4" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
-                    <div className="flex flex-col md:flex-row justify-between items-start gap-4">
-                      <div className="space-y-2">
-                        <span className="section-label !text-[15px] shrink-0">Deep Dive: 외부 API 장애 대응을 위한 예외 처리·서킷브레이커 체계 구축</span>
-                      </div>
-                      <span className="text-[11px] font-bold uppercase tracking-widest text-muted">Fault Tolerance</span>
-                    </div>
-
-                    <div className="max-w-3xl mx-auto space-y-12">
-                      <div className="space-y-4">
-                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🚨 문제</h5>
-                        <p className="text-[15px] text-slate-600 leading-relaxed">
-                          서비스는 추천 지역 선정을 위해 LLM API를 포함해 카카오 로컬 API, 공공데이터포털 API 등 여러 외부 시스템을 연동하고 있었습니다. 운영 중 <strong>API 문서와 실제 응답의 불일치, 간헐적 500 응답, 잘못된 JSON 응답, 심지어 HTTP 상태코드 200이지만 본문에 에러 메시지가 포함되는 케이스</strong>까지 발생하면서, 사용자가 에러 화면을 보거나 응답을 오래 기다리는 문제가 생겼습니다. 외부 시스템의 불안정성이 곧바로 서비스 가용성/신뢰도 저하로 이어져, “외부 API 실패를 전제로 한” 일관된 대응 체계가 필요했습니다.
-                        </p>
-                      </div>
-
-                      <div className="space-y-6">
-                        <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🧩 해결</h5>
-                        <div className="space-y-6">
-                          <div className="space-y-3">
-                            <h6 className="text-[14px] font-bold text-slate-800">외부 API 예외 처리 표준화</h6>
-                            <ul className="text-[15px] text-slate-600 leading-relaxed space-y-1 list-disc list-inside">
-                              <li>API별 에러 코드를 정의하여 원인 식별을 표준화(예: LLM API: E000x, Kakao API: E002x 등)</li>
-                              <li><strong>응답 본문 파싱</strong>을 통해 HTTP 상태코드만으로 판단하기 어려운 실패(200 + error body)까지 정확히 분류</li>
-                              <li>GlobalExceptionHandler에서 외부 API 예외를 일괄 처리하고, <strong>HTTP 메서드/URI/에러코드/메시지</strong>를 error 레벨로 구조화 로깅</li>
-                            </ul>
-                          </div>
-                          <div className="space-y-3">
-                            <h6 className="text-[14px] font-bold text-slate-800">실패 유형에 따른 복구 전략 적용(재시도 + 서킷브레이커)</h6>
-                            <ul className="text-[15px] text-slate-600 leading-relaxed space-y-1 list-disc list-inside">
-                              <li>장애를 “재시도 가치가 있는 실패”와 “재시도 무의미한 실패”로 구분
-                                <ul className="pl-6 list-[circle] list-inside">
-                                  <li><strong>재시도 가능한 케이스</strong>(네트워크 타임아웃, 500 Internal Server Error 등): 1회 재시도 후, 실패율이 임계치(60%)를 넘으면 서킷브레이커 OPEN 전환</li>
-                                  <li><strong>재시도 무의미한 케이스</strong>(API 키 오류, 쿼터 소진 등): 즉시 서킷브레이커 OPEN 전환으로 불필요한 지연 제거</li>
-                                </ul>
-                              </li>
-                              <li>Resilience4j 서킷브레이커 상태 전이(CLOSED → OPEN → HALF_OPEN → CLOSED)를 활용해 외부 API의 회복 여부를 점진적으로 검증</li>
-                              <li>LLM은 <strong>Gemini를 메인, Perplexity를 Fallback</strong>으로 구성해 장애 상황에서도 응답을 보장</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="pt-10 border-t border-slate-200 grid grid-cols-2 gap-12">
-                        <div>
-                          <h5 className="text-[11px] font-black uppercase tracking-widest text-muted mb-3">Impact</h5>
-                          <ul className="text-[15px] font-bold text-slate-900 leading-tight space-y-2">
-                            <li>테스트 환경에서 <strong>외부 LLM 장애로 인한 실패율 0%</strong>를 달성했고, 운영에서도 LLM 장애로 인한 실패 응답이 발생하지 않음</li>
-                            <li>로그만 확인해도 “어떤 외부 API가, 어떤 이유(에러 코드)로 실패했는지” 즉시 파악 가능해져 <strong>장애 대응 시간 단축</strong></li>
-                            <li>외부 의존성에서 발생하는 문제를 <strong>표준화된 코드·로깅·복구 전략</strong>으로 흡수하여 서비스 연속성을 확보</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <h5 className="text-[11px] font-black uppercase tracking-widest text-muted mb-3">Key Learning</h5>
-                          <p className="text-[15px] font-bold text-slate-900 leading-tight">
-                            <strong>외부 시스템은 언제든 실패할 수 있다</strong>는 전제를 설계에 반영해야 한다는 원칙을 체득했습니다. 특히 “예외 분류(원인 식별)”가 선행되어야 “재시도/서킷브레이커/폴백” 같은 복구 전략이 효과적으로 작동한다는 점을 이해했고, 이 패턴이 결제·메시징·지도 등 다양한 외부 연동에도 확장 가능하다는 확신을 얻었습니다.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                   {/* Deep Dive 05: Infrastructure & CI/CD Automation */}
                   <div id="moitz-deep-5" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4">
-                      <span className="section-label !text-[15px] shrink-0">Deep Dive: Infrastructure & CI/CD</span>
+                      <span className="section-label !text-[15px] shrink-0">Deep Dive 05: <br />Infrastructure & CI/CD</span>
                       <span className="text-[11px] font-bold uppercase tracking-widest text-muted">DevOps & Cloud</span>
                     </div>
 
