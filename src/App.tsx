@@ -465,7 +465,7 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                       <div className="space-y-6">
                         <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🔎 Analysis & Strategy</h5>
                         <p className="text-[15px] text-slate-600 leading-relaxed">
-                          모델의 자유도를 줄이고 시스템 요구사항에 맞게 추론 과정을 가이드하는 구조적 설계를 전략으로 수립했습니다.
+                          모델의 자유도를 줄이고 시스템 요구사항에 맞게 추론 과정을 가이드하는 구조적 설계를 전략으로 수립
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                           {[
@@ -525,7 +525,7 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4">
                       <div className="space-y-2">
                         <span className="section-label !text-[15px] shrink-0">Deep Dive: Subway Data Pipeline & Shortest Path Algorithm</span>
-                        <p className="text-[13px] text-slate-500 font-medium">수도권 지하철 데이터를 수집/정제/적재하여 핵심 기능인 지하철 이동 경로 조회 로직을 직접 구현해 외부 API 사용 시 19s → 20ms로 단축</p>
+                        <p className="text-[14px] text-slate-500 font-medium">수도권 지하철 데이터를 수집/정제/적재하여 핵심 기능인 지하철 이동 경로 조회 로직을 직접 구현해 외부 API 사용 시 19s → 20ms로 단축</p>
                       </div>
                       <span className="text-[11px] font-bold uppercase tracking-widest text-muted">Data & Algorithm</span>
                     </div>
@@ -600,16 +600,25 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                   {/* Deep Dive 03: WebClient Async Parallel Processing */}
                   <div id="moitz-deep-3" className="bg-slate-50 p-10 rounded-2xl border border-slate-100 space-y-12">
                     <div className="flex flex-col md:flex-row justify-between items-start gap-4">
-                      <span className="section-label !text-[15px] shrink-0">Deep Dive: Async Parallel Processing</span>
+                      <div className="space-y-2">
+                                              <span className="section-label !text-[15px] shrink-0">Deep Dive: Async Parallel Processing</span>
+                                              <p className="text-[14px] text-slate-500 font-medium">모임 장소 추천 시 카카오맵 API 호출을 Spring WebFlux 기반 비동기-병렬 처리로 최적화하여 7s → 290ms로 단축(96% 개선)</p>
+                                            </div>
                       <span className="text-[11px] font-bold uppercase tracking-widest text-muted">Performance Tuning</span>
                     </div>
 
                     <div className="max-w-3xl mx-auto space-y-12">
                       <div className="space-y-4">
                         <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🚨 The Problem</h5>
-                        <p className="text-[15px] text-slate-600 leading-relaxed">
-                          기존 RestTemplate 기반의 동기 호출 방식은 30개 이상의 외부 API를 순차적으로 호출하며 <strong>약 7초의 응답 지연</strong>을 초래했습니다. 이는 실시간 서비스로서 치명적인 사용자 경험 저하를 의미했습니다.
-                        </p>
+                        <ul className="text-[15px] text-slate-600 leading-relaxed space-y-1 list-disc list-inside">
+                                              <li>사용자 요청 1회당 최대 260번의 외부 API 호출 필요</li>
+                                                <ul className="pl-6 list-[circle] list-inside">
+                                                  <li>카카오맵 장소 검색 API 호출 최대 75회(추천 지역 5개 × 검색 키워드 15개)</li>
+                                                  <li>이미지 검색 API 호출 최대 185회(추천 지역 5개 × 추천 장소 37개)</li>
+                                                </ul>
+                                                <li>RestTemplate 사용 시 최대 260회의 API 호출을 순차 처리하면서 평균 7초의 지연 발생</li>
+
+                                              </ul>
                       </div>
 
                       <div className="space-y-6">
@@ -621,10 +630,16 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
 
                       <div className="space-y-4">
                         <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🧩 Solution: Reactive Streams</h5>
-                        <p className="text-[15px] text-slate-600 leading-relaxed">
-                          <code>Mono.zip</code>과 <code>Flux.merge</code>를 활용하여 독립적인 API 요청들을 병렬로 처리했습니다. 
-                          또한 커스텀 쓰레드 풀을 설정하여 리액티브 스트림의 효율을 극대화하고, 타임아웃 및 재시도 전략을 정교하게 튜닝했습니다.
-                        </p>
+                        <ul className="text-[15px] text-slate-600 leading-relaxed space-y-1 list-disc list-inside">
+                                                                      <li>RestTemplate을 WebClient 기반 비동기 HTTP 클라이언트로 전환하여 논블로킹 I/O 구현</li>
+                                                                      <li>Reactor의 Flux와 flatMap을 활용해 모든 API 호출을 병렬로 처리하도록 구조 개선</li>
+                                                                        <ul className="pl-6 list-[circle] list-inside">
+                                                                          <li>지역별 장소 검색 요청을 Flux로 생성하고, flatMap으로 각 요청을 비동기로 실행</li>
+                                                                          <li>장소별 이미지 검색 요청도 동일한 방식으로 병렬화</li>
+                                                                        </ul>
+                                                                        <li>모든 비동기 호출이 완료될 때까지 기다리는 collectList() 를 통해 최종 결과 수집</li>
+
+                                                                      </ul>
                         <div className="rounded-xl overflow-hidden border border-slate-200 mb-6">
                           <img
                             src="/moitz_async.png"
