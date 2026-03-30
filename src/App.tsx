@@ -19,7 +19,8 @@ import {
   Shield,
   Users,
   FileText,
-  Wrench
+  Wrench,
+  Flag
 } from "lucide-react";
 
 const ProjectItem = ({ 
@@ -31,16 +32,18 @@ const ProjectItem = ({
   details,
   period,
   participants,
+  event,
   image
-}: { 
-  title: string, 
-  description: string, 
-  tags: string[], 
+}: {
+  title: string,
+  description: string,
+  tags: string[],
   link?: string,
   github?: string,
   details?: React.ReactNode,
   period?: string,
   participants?: string,
+  event?: string,
   image?: string
 }) => (
   <article className="project-card">
@@ -62,8 +65,14 @@ const ProjectItem = ({
       </div>
     </div>
     <div className="flex flex-col gap-3 mb-6">
-      {(period || participants) && (
+      {(event || period || participants) && (
         <div className="flex items-center gap-4 text-[11px] font-bold uppercase tracking-wider text-muted">
+          {event && (
+            <div className="flex items-center gap-1.5">
+              <Flag size={12} aria-hidden="true" />
+              <span>{event}</span>
+            </div>
+          )}
           {period && (
             <div className="flex items-center gap-1.5">
               <Clock size={12} aria-hidden="true" />
@@ -133,6 +142,12 @@ const SideNav = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      // If scrolled to the bottom of the page, activate the last section
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 10) {
+        setActiveId(sections[sections.length - 1].id);
+        return;
+      }
+
       // Find all elements corresponding to sections
       const sectionElements = sections
         .map((s) => ({
@@ -253,9 +268,10 @@ export default function App() {
                 description="개인사업자와 프리랜서를 위한 AI 세무 비서. 국세청의 '2025년 세금절약가이드'를 학습한 RAG 기반 지능형 상담 시스템입니다."
                 tags={["AI", "RAG", "Next.js 14", "OpenAI Assistants", "TypeScript"]}
                 link="https://tax-free.vercel.app/"
-                github="https://github.com/saera-yook"
-                period="2026.02 (1일)"
-                participants="팀 프로젝트 (2인)"
+
+                event="Cursor Hackathon Seoul"
+                period="2026.02 (5시간)"
+                participants="팀 프로젝트(2인)"
               details={
                 <div className="space-y-8">
                   <div className="rounded-xl overflow-hidden border border-line bg-slate-50">
@@ -274,7 +290,7 @@ export default function App() {
                         <TechBadge icon={Zap} label="Build Time" value="5 Hours (Cursor Hackathon)" />
                         <TechBadge icon={Cpu} label="AI Model" value="GPT-4o + Assistants API" />
                         <TechBadge icon={Database} label="Knowledge" value="2025 NTS Tax Guide (PDF)" />
-                        <TechBadge icon={Code2} label="Stack" value="Next.js 14, Vector Stores" />
+                        <TechBadge icon={Code2} label="Stack" value="Next.js 14" />
                       </div>
                     </div>
                     <div>
@@ -347,12 +363,6 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                           <span className="text-xs font-black uppercase tracking-widest w-32 shrink-0">Infra</span>
                           <span className="text-sm text-slate-600">AWS Blue-Green / VPC</span>
                         </div>
-                      </div>
-                      <div className="mt-10">
-                        <a href="https://github.com/woowacourse-teams/2025-moitz/tree/be-prod" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-slate-900 hover:opacity-70 transition-opacity p-2 -m-2">
-                          <Github size={14} aria-hidden="true" />
-                          <span>View Source (Backend)</span>
-                        </a>
                       </div>
                     </div>
 
@@ -487,7 +497,7 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                           </div>
                           <div className="flex gap-5">
                             <span className="text-[13px] font-bold text-muted shrink-0">02</span>
-                            <p className="text-[15px] text-slate-600 leading-relaxed">예외 원인을 먼저 분류(표준화)해야 재시도·서킷브레이커·폴백 같은 복구 전략이 효과적으로 작동</p>
+                            <p className="text-[15px] text-slate-600 leading-relaxed">예외 원인을 먼저 분류(표준화)해야 복구 전략이 효과적으로 작동</p>
                           </div>
                           <div className="flex gap-5">
                             <span className="text-[13px] font-bold text-muted shrink-0">03</span>
@@ -519,12 +529,12 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                           <h5 className="text-[11px] font-black uppercase tracking-widest text-muted mb-3">Impact</h5>
                           <ul className="text-[15px] font-bold text-slate-900 leading-tight space-y-2">
                             <li>LLM 장애로 인한 실패율 0% 달성. 서비스 연속성 확보.</li>
-                            <li>로그로 에러 원인 즉시 파악 가능해져 장애 대응 시간 단축</li>
+                            <li>로그로 에러 원인 즉시 파악 가능해져 장애 대응 시간 단축.</li>
                           </ul>
                         </div>
                         <div>
                           <h5 className="text-[11px] font-black uppercase tracking-widest text-muted mb-3">Key Learning</h5>
-                          <p className="text-[15px] font-bold text-slate-900 leading-tight">외부 시스템은 언제든 실패할 수 있다는 전제를 설계에 반영해야 한다는 원칙을 체득</p>
+                          <p className="text-[15px] font-bold text-slate-900 leading-tight">외부 시스템은 언제든 실패할 수 있다는 전제를 설계에 반영해야 한다는 원칙을 체득.</p>
                         </div>
                       </div>
                     </div>
@@ -555,7 +565,7 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                         <div className="space-y-5">
                           <div className="flex gap-5">
                             <span className="text-[13px] font-bold text-muted shrink-0">01</span>
-                            <p className="text-[15px] text-slate-600 leading-relaxed">비교적 안정적인 다른 API는 비용이 비싸고 장애 가능성이 존재.</p>
+                            <p className="text-[15px] text-slate-600 leading-relaxed">비교적 안정적인 다른 API는 비용이 비싸고 장애 가능성이 존재</p>
                           </div>
                           <div className="flex gap-5">
                             <span className="text-[13px] font-bold text-muted shrink-0">02</span>
@@ -575,8 +585,8 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                       <div className="space-y-4">
                         <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🧩 Solution</h5>
                         <ul className="text-[15px] text-slate-600 leading-relaxed space-y-1 list-disc list-inside">
-                          <li>PoC로 2개 노선의 지하철 이동 경로 조회 기능을 구현해 실제로 최단 시간 경로를 계산할 수 있는지 가능성 확인</li>
-                          <li>공공데이터포털 API를 이용해 24개 노선, 614개 역에 대해 지하철 이동 시간 데이터 수집/정제/적재 자동화</li>
+                          <li>PoC로 2개 노선의 이동 경로 조회 기능을 구현해 실제로 최단 시간 경로를 계산할 수 있는지 가능성 확인</li>
+                          <li>공공데이터포털 API를 이용해 24개 노선, 614개 역에 대해 <strong>지하철 이동 시간 데이터 수집/정제/적재 자동화</strong></li>
                           <li>역 간 연결 관계를 방향 그래프로 모델링
                             <ul className="pl-6 list-[circle] list-inside">
                               <li>각 간선에 이동 시간 가중치 부여</li>
@@ -696,7 +706,7 @@ await openai.beta.vectorStores.files.create(vectorStore.id, {
                       <div className="space-y-4">
                         <h5 className="text-[13px] font-black uppercase tracking-widest text-slate-900">🧩 Solution: Blue-Green Deployment</h5>
                           <p className="text-[15px] text-slate-600 leading-relaxed">
-                            GitHub Actions를 활용하여 빌드 및 테스트를 자동화하고, NCP(Naver Cloud Platform)의 로드 밸런서를 제어하여 <strong>Blue-Green 배포</strong>를 구현했습니다. 
+                            GitHub Actions를 활용하여 빌드 및 테스트를 자동화하고 <strong>Blue-Green 배포</strong>를 구현했습니다.
                             새로운 버전(Green)이 정상 가동됨을 확인한 후 트래픽을 일괄 전환함으로써 배포 리스크를 최소화했습니다.
                           </p>
                       </div>
